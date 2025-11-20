@@ -26,10 +26,12 @@ namespace DoAn_DotNet
             }
             else
             {
-                if (txtTaiKhoan.Text == "admin" && txtMatKhau.Text == "123")
+                if (txtTaiKhoan.Text == "1" && txtMatKhau.Text == "1")
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    Main main = new Main();
+                    main.ShowDialog();
+                    this.Hide(); // Ẩn form đăng nhập sau khi mở form chính
                 }
                 else
                 {
@@ -43,7 +45,7 @@ namespace DoAn_DotNet
 
         private void Login_Load(object sender, EventArgs e)
         {
-                
+            txtMatKhau.UseSystemPasswordChar = true;
         }
     }
 }
