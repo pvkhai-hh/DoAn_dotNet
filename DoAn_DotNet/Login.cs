@@ -40,5 +40,10 @@ namespace DoAn_DotNet
                 }
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+                
+        }
     }
 }
