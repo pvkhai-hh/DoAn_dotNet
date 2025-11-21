@@ -28,22 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTraCuu = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSanC = new System.Windows.Forms.Label();
             this.lblSanD = new System.Windows.Forms.Label();
             this.lblSanB = new System.Windows.Forms.Label();
             this.lblSanE = new System.Windows.Forms.Label();
             this.lblSanA = new System.Windows.Forms.Label();
-            this.cboDen = new System.Windows.Forms.ComboBox();
-            this.cboTu = new System.Windows.Forms.ComboBox();
-            this.cboChonSan = new System.Windows.Forms.ComboBox();
-            this.dtpChonSan = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.cboThoiGian = new System.Windows.Forms.ComboBox();
+            this.dtpChonNgay = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,19 +52,20 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnTraCuu
             // 
-            this.button1.Location = new System.Drawing.Point(848, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Tra cứu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Location = new System.Drawing.Point(848, 29);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(105, 43);
+            this.btnTraCuu.TabIndex = 0;
+            this.btnTraCuu.Text = "Tra cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.txtTraCuu);
+            this.groupBox2.Controls.Add(this.btnTraCuu);
             this.groupBox2.Location = new System.Drawing.Point(14, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(964, 92);
@@ -76,13 +73,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tra cứu đặt sân:";
             // 
-            // textBox1
+            // txtTraCuu
             // 
-            this.textBox1.Location = new System.Drawing.Point(24, 29);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(799, 43);
-            this.textBox1.TabIndex = 0;
+            this.txtTraCuu.Location = new System.Drawing.Point(24, 29);
+            this.txtTraCuu.Multiline = true;
+            this.txtTraCuu.Name = "txtTraCuu";
+            this.txtTraCuu.Size = new System.Drawing.Size(799, 43);
+            this.txtTraCuu.TabIndex = 0;
             // 
             // panel1
             // 
@@ -92,9 +89,9 @@
             this.panel1.Controls.Add(this.lblSanB);
             this.panel1.Controls.Add(this.lblSanE);
             this.panel1.Controls.Add(this.lblSanA);
-            this.panel1.Location = new System.Drawing.Point(12, 174);
+            this.panel1.Location = new System.Drawing.Point(12, 138);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 319);
+            this.panel1.Size = new System.Drawing.Size(991, 358);
             this.panel1.TabIndex = 6;
             // 
             // lblSanC
@@ -102,7 +99,7 @@
             this.lblSanC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSanC.Location = new System.Drawing.Point(402, 126);
             this.lblSanC.Name = "lblSanC";
-            this.lblSanC.Size = new System.Drawing.Size(188, 182);
+            this.lblSanC.Size = new System.Drawing.Size(188, 217);
             this.lblSanC.TabIndex = 2;
             // 
             // lblSanD
@@ -110,7 +107,7 @@
             this.lblSanD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSanD.Location = new System.Drawing.Point(596, 126);
             this.lblSanD.Name = "lblSanD";
-            this.lblSanD.Size = new System.Drawing.Size(188, 182);
+            this.lblSanD.Size = new System.Drawing.Size(188, 217);
             this.lblSanD.TabIndex = 2;
             // 
             // lblSanB
@@ -118,7 +115,7 @@
             this.lblSanB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSanB.Location = new System.Drawing.Point(208, 126);
             this.lblSanB.Name = "lblSanB";
-            this.lblSanB.Size = new System.Drawing.Size(188, 182);
+            this.lblSanB.Size = new System.Drawing.Size(188, 217);
             this.lblSanB.TabIndex = 2;
             // 
             // lblSanE
@@ -126,7 +123,7 @@
             this.lblSanE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSanE.Location = new System.Drawing.Point(790, 126);
             this.lblSanE.Name = "lblSanE";
-            this.lblSanE.Size = new System.Drawing.Size(188, 182);
+            this.lblSanE.Size = new System.Drawing.Size(188, 217);
             this.lblSanE.TabIndex = 2;
             // 
             // lblSanA
@@ -134,67 +131,34 @@
             this.lblSanA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSanA.Location = new System.Drawing.Point(14, 126);
             this.lblSanA.Name = "lblSanA";
-            this.lblSanA.Size = new System.Drawing.Size(188, 182);
+            this.lblSanA.Size = new System.Drawing.Size(188, 217);
             this.lblSanA.TabIndex = 2;
+            this.lblSanA.Click += new System.EventHandler(this.lblSanA_Click);
             // 
-            // cboDen
+            // cboThoiGian
             // 
-            this.cboDen.FormattingEnabled = true;
-            this.cboDen.Location = new System.Drawing.Point(570, 86);
-            this.cboDen.Name = "cboDen";
-            this.cboDen.Size = new System.Drawing.Size(220, 30);
-            this.cboDen.TabIndex = 3;
+            this.cboThoiGian.FormattingEnabled = true;
+            this.cboThoiGian.Location = new System.Drawing.Point(607, 33);
+            this.cboThoiGian.Name = "cboThoiGian";
+            this.cboThoiGian.Size = new System.Drawing.Size(220, 30);
+            this.cboThoiGian.TabIndex = 3;
             // 
-            // cboTu
+            // dtpChonNgay
             // 
-            this.cboTu.FormattingEnabled = true;
-            this.cboTu.Location = new System.Drawing.Point(570, 36);
-            this.cboTu.Name = "cboTu";
-            this.cboTu.Size = new System.Drawing.Size(220, 30);
-            this.cboTu.TabIndex = 3;
-            // 
-            // cboChonSan
-            // 
-            this.cboChonSan.FormattingEnabled = true;
-            this.cboChonSan.Location = new System.Drawing.Point(168, 86);
-            this.cboChonSan.Name = "cboChonSan";
-            this.cboChonSan.Size = new System.Drawing.Size(220, 30);
-            this.cboChonSan.TabIndex = 3;
-            // 
-            // dtpChonSan
-            // 
-            this.dtpChonSan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpChonSan.Location = new System.Drawing.Point(168, 33);
-            this.dtpChonSan.Name = "dtpChonSan";
-            this.dtpChonSan.Size = new System.Drawing.Size(220, 30);
-            this.dtpChonSan.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(498, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 22);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Đến:";
+            this.dtpChonNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpChonNgay.Location = new System.Drawing.Point(166, 33);
+            this.dtpChonNgay.Name = "dtpChonNgay";
+            this.dtpChonNgay.Size = new System.Drawing.Size(220, 30);
+            this.dtpChonNgay.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(507, 41);
+            this.label3.Location = new System.Drawing.Point(449, 39);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 22);
+            this.label3.Size = new System.Drawing.Size(131, 22);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Từ:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Chọn sân:";
+            this.label3.Text = "Chọn thời gian:";
             // 
             // label1
             // 
@@ -207,27 +171,24 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(861, 53);
+            this.btnTimKiem.Location = new System.Drawing.Point(862, 29);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(105, 43);
             this.btnTimKiem.TabIndex = 0;
-            this.btnTimKiem.Text = "Tra cứu";
+            this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboDen);
-            this.groupBox1.Controls.Add(this.cboTu);
-            this.groupBox1.Controls.Add(this.cboChonSan);
-            this.groupBox1.Controls.Add(this.dtpChonSan);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cboThoiGian);
+            this.groupBox1.Controls.Add(this.dtpChonNgay);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnTimKiem);
             this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(991, 136);
+            this.groupBox1.Size = new System.Drawing.Size(991, 90);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Quản lý sân:";
@@ -235,13 +196,13 @@
             // trợGiúpToolStripMenuItem
             // 
             this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(78, 26);
             this.trợGiúpToolStripMenuItem.Text = "Trợ giúp";
             // 
             // heToolStripMenuItem
             // 
             this.heToolStripMenuItem.Name = "heToolStripMenuItem";
-            this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
             this.heToolStripMenuItem.Text = "Hệ thống";
             // 
             // menuStrip1
@@ -260,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 503);
+            this.ClientSize = new System.Drawing.Size(1014, 525);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
@@ -283,22 +244,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTraCuu;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTraCuu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSanC;
         private System.Windows.Forms.Label lblSanD;
         private System.Windows.Forms.Label lblSanB;
         private System.Windows.Forms.Label lblSanE;
         private System.Windows.Forms.Label lblSanA;
-        private System.Windows.Forms.ComboBox cboDen;
-        private System.Windows.Forms.ComboBox cboTu;
-        private System.Windows.Forms.ComboBox cboChonSan;
-        private System.Windows.Forms.DateTimePicker dtpChonSan;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboThoiGian;
+        private System.Windows.Forms.DateTimePicker dtpChonNgay;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.GroupBox groupBox1;
