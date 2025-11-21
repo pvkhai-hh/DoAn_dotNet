@@ -30,8 +30,8 @@ namespace DoAn_DotNet
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Main main = new Main();
-                    main.ShowDialog();
                     this.Hide(); // Ẩn form đăng nhập sau khi mở form chính
+                    main.ShowDialog();
                 }
                 else
                 {
