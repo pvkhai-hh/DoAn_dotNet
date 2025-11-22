@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChuoiKetNoi - Copy.cs" />
     <Compile Include="ChuoiKetNoi.cs" />
     <Compile Include="DatSan.cs">
       <SubType>Form</SubType>
