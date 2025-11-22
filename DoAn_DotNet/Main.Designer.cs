@@ -101,6 +101,7 @@
             this.lblSanC.Name = "lblSanC";
             this.lblSanC.Size = new System.Drawing.Size(188, 217);
             this.lblSanC.TabIndex = 2;
+            this.lblSanC.Click += new System.EventHandler(this.lblSanC_Click);
             // 
             // lblSanD
             // 
@@ -109,6 +110,7 @@
             this.lblSanD.Name = "lblSanD";
             this.lblSanD.Size = new System.Drawing.Size(188, 217);
             this.lblSanD.TabIndex = 2;
+            this.lblSanD.Click += new System.EventHandler(this.lblSanD_Click);
             // 
             // lblSanB
             // 
@@ -117,6 +119,7 @@
             this.lblSanB.Name = "lblSanB";
             this.lblSanB.Size = new System.Drawing.Size(188, 217);
             this.lblSanB.TabIndex = 2;
+            this.lblSanB.Click += new System.EventHandler(this.lblSanB_Click);
             // 
             // lblSanE
             // 
@@ -125,6 +128,7 @@
             this.lblSanE.Name = "lblSanE";
             this.lblSanE.Size = new System.Drawing.Size(188, 217);
             this.lblSanE.TabIndex = 2;
+            this.lblSanE.Click += new System.EventHandler(this.lblSanE_Click);
             // 
             // lblSanA
             // 
@@ -196,13 +200,13 @@
             // trợGiúpToolStripMenuItem
             // 
             this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(78, 26);
+            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
             this.trợGiúpToolStripMenuItem.Text = "Trợ giúp";
             // 
             // heToolStripMenuItem
             // 
             this.heToolStripMenuItem.Name = "heToolStripMenuItem";
-            this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
+            this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.heToolStripMenuItem.Text = "Hệ thống";
             // 
             // menuStrip1

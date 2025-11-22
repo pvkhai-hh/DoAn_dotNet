@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static DoAn_DotNet.ChuoiKetNoi;
 namespace DoAn_DotNet
 {
     public partial class DatSan : Form
@@ -17,7 +17,10 @@ namespace DoAn_DotNet
         {
             InitializeComponent();
         }
-        string strKetNoi = @"Data Source=ADMIN\SQLEXPRESS;Initial Catalog=QLSANBONG;Integrated Security=True";
+        public bool DaThucHien { get; set; } = false;
+
+        ChuoiKetNoi pro = new ChuoiKetNoi();
+        
 
         // Các biến ngầm (không nhìn thấy) những sẽ lưu SQL
         private string _tenSan;
@@ -48,7 +51,7 @@ namespace DoAn_DotNet
         }
         private void LayMaSanTuTen(string tenSan)
         {
-            using (SqlConnection conn = new SqlConnection(strKetNoi))
+            using (SqlConnection conn = new SqlConnection(pro.strKetNoi))
             {
                 try
                 {
@@ -69,56 +72,77 @@ namespace DoAn_DotNet
 
         private void btnDatSan_Click(object sender, EventArgs e)
         {
-            if (txtTenKhach.Text == "" || txtSDT.Text == "")
-            {
-                MessageBox.Show("Vui lòng nhập Tên khách và Số điện thoại!", "Thiếu thông tin");
-                return;
-            }
-
-            // Đặt mã sân tự động: D2511200830 -> Đặt ngày 20/11/25 lúc 08:30
-            string maDat = "D" + DateTime.Now.ToString("yyMMddHHmmss");
-
-            //Lưu vào CSDL
-            using (SqlConnection conn = new SqlConnection(strKetNoi))
-            {
-                try
-                {
-                    conn.Open();
-                    string sql = @"INSERT INTO DAT_SAN (MaDat, TenKhach, SoDienThoai, MaSan, NgayDat, GioBatDau, GioKetThuc, TrangThai) 
-                                   VALUES (@MaDat, @TenKhach, @SDT, @MaSan, @NgayDat, @GioBatDau, @GioKetThuc, N'Đã đặt')";
-
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-
-                    // Các tham số lấy từ ô nhập liệu
-                    cmd.Parameters.AddWithValue("@MaDat", maDat);
-                    cmd.Parameters.AddWithValue("@TenKhach", txtTenKhach.Text.Trim());
-                    cmd.Parameters.AddWithValue("@SDT", txtSDT.Text.Trim());
-
-                    // Các tham số lấy từ biến ngầm (đã lưu ở trên)
-                    cmd.Parameters.AddWithValue("@MaSan", _maSan);
-                    cmd.Parameters.AddWithValue("@NgayDat", _ngayDa);
-                    cmd.Parameters.AddWithValue("@GioBatDau", _gioBatDau);
-                    cmd.Parameters.AddWithValue("@GioKetThuc", _gioKetThuc);
-
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Đặt sân thành công!", "Thông báo");
-                    this.Close(); // Đóng form để quay về màn hình chính
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi lưu đặt sân: " + ex.Message);
-                }
-            }
+            ThucHienDatSan(false); // false = Chỉ đặt
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
             DialogResult traloi;
-            traloi = MessageBox.Show("Bạn không muốn đặt sân nữa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question); ;
+            traloi = MessageBox.Show("Bạn không muốn đặt sân nữa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question); 
             if (traloi == DialogResult.OK)
-                Application.Exit();
+                return;
 
+        }
+
+        private void btnGiaoSan_Click(object sender, EventArgs e)
+        {
+            ThucHienDatSan(true); // true = Đặt xong giao luôn
+        }
+        private void ThucHienDatSan(bool giaoNgay)
+        {
+            if (txtTenKhach.Text == "" || txtSDT.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Thiếu thông tin");
+                return;
+            }
+
+            string maDat = "D" + DateTime.Now.ToString("ddHHmmss");
+            string trangThai = giaoNgay ? "Đang sử dụng" : "Đã đặt"; // Nếu giao ngay thì set luôn trạng thái
+
+            using (SqlConnection conn = new SqlConnection(pro.strKetNoi))
+            {
+                try
+                {
+                    conn.Open();
+                    // B1: Insert vào DAT_SAN
+                    string sql = @"INSERT INTO DAT_SAN (MaDat, TenKhach, SoDienThoai, MaSan, NgayDat, GioBatDau, GioKetThuc, TrangThai) 
+                               VALUES (@MaDat, @TenKhach, @SDT, @MaSan, @NgayDat, @GioBatDau, @GioKetThuc, @TrangThai)";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@MaDat", maDat);
+                    cmd.Parameters.AddWithValue("@TenKhach", txtTenKhach.Text.Trim());
+                    cmd.Parameters.AddWithValue("@SDT", txtSDT.Text.Trim());
+                    cmd.Parameters.AddWithValue("@MaSan", _maSan);
+                    cmd.Parameters.AddWithValue("@NgayDat", _ngayDa);
+                    cmd.Parameters.AddWithValue("@GioBatDau", _gioBatDau);
+                    cmd.Parameters.AddWithValue("@GioKetThuc", _gioKetThuc);
+                    cmd.Parameters.AddWithValue("@TrangThai", trangThai);
+
+                    cmd.ExecuteNonQuery();
+
+                    // B2: Nếu là Giao Sân Luôn -> Insert thêm vào bảng GIAO_SAN
+                    if (giaoNgay)
+                    {
+                        string sqlGiao = "INSERT INTO GIAO_SAN (MaGiao, MaDat, ThoiGianGiao) VALUES (@MaGiao, @MaDat, GETDATE())";
+                        SqlCommand cmdGiao = new SqlCommand(sqlGiao, conn);
+                        cmdGiao.Parameters.AddWithValue("@MaGiao", "G" + DateTime.Now.ToString("ddHHmmss"));
+                        cmdGiao.Parameters.AddWithValue("@MaDat", maDat);
+                        cmdGiao.ExecuteNonQuery();
+                        MessageBox.Show("Đã đặt và giao sân thành công! Tính giờ ngay.", "Thành công");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đã đặt sân thành công!", "Thành công");
+                    }
+
+                    DaThucHien = true; // Đánh dấu đã làm xong
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
         }
     }
 }

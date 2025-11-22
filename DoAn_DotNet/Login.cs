@@ -30,6 +30,7 @@ namespace DoAn_DotNet
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Main main = new Main();
+                  
                     this.Hide(); // Ẩn form đăng nhập sau khi mở form chính
                     main.ShowDialog();
                 }
@@ -45,6 +46,7 @@ namespace DoAn_DotNet
 
         private void Login_Load(object sender, EventArgs e)
         {
+            txtTaiKhoan.Focus();
             txtMatKhau.UseSystemPasswordChar = true;
         }
     }

@@ -105,3 +105,108 @@ SELECT * FROM SAN;
 SELECT * FROM DAT_SAN;
 SELECT * FROM GIAO_SAN;
 SELECT * FROM THANH_TOAN;
+
+GO
+
+-- Thủ tục Giao Sân (Check-in)
+CREATE PROCEDURE sp_GiaoSan
+    @MaDat VARCHAR(10),
+    @ThoiGianGiao DATETIME
+AS
+BEGIN
+    -- Thêm vào bảng Giao Sân
+    INSERT INTO GIAO_SAN (MaGiao, MaDat, ThoiGianGiao)
+    VALUES ('G' + FORMAT(GETDATE(), 'ddMMyyHHmm'), @MaDat, @ThoiGianGiao);
+
+    -- Cập nhật trạng thái Đặt Sân thành 'Đang sử dụng'
+    UPDATE DAT_SAN SET TrangThai = N'Đang sử dụng' WHERE MaDat = @MaDat;
+END;
+GO
+
+-- Thủ tục Trả Sân (Check-out) - Đơn giản hóa logic update
+CREATE PROCEDURE sp_TraSan
+    @MaDat VARCHAR(10),
+    @ThoiGianTra DATETIME
+AS
+BEGIN
+    -- Cập nhật giờ trả vào bảng Giao Sân
+    UPDATE GIAO_SAN SET ThoiGianTra = @ThoiGianTra WHERE MaDat = @MaDat;
+    
+    -- Cập nhật trạng thái Đặt Sân về lại Trống hoặc Hoàn thành (Tùy logic của bạn, ở đây tôi để Hoàn thành)
+    UPDATE DAT_SAN SET TrangThai = N'Hoàn thành' WHERE MaDat = @MaDat;
+END;
+GO
+
+-- 1. Thủ tục Hủy Đặt Sân (Xóa dòng đặt sân để trả về trạng thái Trống)
+CREATE PROCEDURE sp_HuyDatSan
+    @MaDat VARCHAR(10)
+AS
+BEGIN
+    DELETE FROM DAT_SAN WHERE MaDat = @MaDat;
+END;
+GO
+
+-- 2. Thủ tục lấy Đơn Giá sân theo Mã Đặt (Dùng cho Thanh Toán)
+CREATE PROCEDURE sp_LayThongTinThanhToan
+    @MaDat VARCHAR(10)
+AS
+BEGIN
+    SELECT s.TenSan, s.DonGia, d.GioBatDau, d.GioKetThuc, d.TenKhach
+    FROM DAT_SAN d
+    JOIN SAN s ON d.MaSan = s.MaSan
+    WHERE d.MaDat = @MaDat;
+END;
+GO
+USE QLSANBONG;
+GO
+
+ALTER PROCEDURE sp_TraSan
+    @MaDat VARCHAR(20), -- Đã sửa thành 20 cho khớp với mã mới
+    @ThoiGianTra DATETIME
+AS
+BEGIN
+    -- 1. Cập nhật giờ trả vào bảng Giao Sân
+    UPDATE GIAO_SAN 
+    SET ThoiGianTra = @ThoiGianTra 
+    WHERE MaDat = @MaDat;
+    
+    -- 2. QUAN TRỌNG: Trả trạng thái về 'Trống' (thay vì Hoàn thành)
+    UPDATE DAT_SAN 
+    SET TrangThai = N'Trống' 
+    WHERE MaDat = @MaDat;
+END;
+GO
+
+ALTER PROCEDURE sp_TraSan
+    @MaDat VARCHAR(20),
+    @ThoiGianTra DATETIME
+AS
+BEGIN
+    -- Cập nhật giờ trả
+    UPDATE GIAO_SAN SET ThoiGianTra = @ThoiGianTra WHERE MaDat = @MaDat;
+    
+    -- Cập nhật trạng thái thành 'Hoàn thành' (Để phân biệt với 'Trống' và 'Đang sử dụng')
+    UPDATE DAT_SAN 
+    SET TrangThai = N'Hoàn thành' 
+    WHERE MaDat = @MaDat;
+END;
+GO
+ALTER PROCEDURE sp_GiaoSan
+    @MaDat VARCHAR(20), -- Lưu ý: Đảm bảo kiểu dữ liệu khớp với bảng cha
+    @ThoiGianGiao DATETIME
+AS
+BEGIN
+    -- [SỬA LỖI] Rút ngắn mã Giao còn 9 ký tự (G + Ngày + Giờ + Phút + Giây)
+    -- Ví dụ: G22013045 (Ngày 22, 01h30p45s) -> 9 ký tự (Vừa khít ô 10)
+    DECLARE @MaGiao VARCHAR(10) = 'G' + FORMAT(GETDATE(), 'ddHHmmss');
+
+    -- 1. Thêm vào bảng Giao Sân
+    INSERT INTO GIAO_SAN (MaGiao, MaDat, ThoiGianGiao)
+    VALUES (@MaGiao, @MaDat, @ThoiGianGiao);
+
+    -- 2. Cập nhật trạng thái Đặt Sân
+    UPDATE DAT_SAN 
+    SET TrangThai = N'Đang sử dụng' 
+    WHERE MaDat = @MaDat;
+END;
+GO
