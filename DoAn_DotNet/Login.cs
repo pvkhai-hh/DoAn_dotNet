@@ -15,6 +15,7 @@ namespace DoAn_DotNet
         public Login()
         {
             InitializeComponent();
+           
         }
            
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -46,8 +47,8 @@ namespace DoAn_DotNet
 
         private void Login_Load(object sender, EventArgs e)
         {
-            txtTaiKhoan.Focus();
-            txtMatKhau.UseSystemPasswordChar = true;
+            
+            this.txtMatKhau.UseSystemPasswordChar = true;
         }
     }
 }

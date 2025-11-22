@@ -43,15 +43,18 @@ namespace DoAn_DotNet
 
             LoadTrangThaiSan();
         }
+
+        #region code phần load trạng thái cũ!
+
         private void LoadTrangThaiSan(string tenSanLoc = "")
         {
             // --- PHẦN 1: CÀI ĐẶT GIAO DIỆN & ẨN HIỆN ---
             Label[] labels = { lblSanA, lblSanB, lblSanC, lblSanD, lblSanE };
-            var mapSan = new Dictionary<string, Label>
-    {
-        { "Sân A", lblSanA }, { "Sân B", lblSanB },
-        { "Sân C", lblSanC }, { "Sân D", lblSanD }, { "Sân E", lblSanE }
-    };
+            var mapSan = new Dictionary<string, Label>{
+                                                         { "Sân A", lblSanA }, { "Sân B", lblSanB },
+                                                         { "Sân C", lblSanC }, { "Sân D", lblSanD }, { "Sân E", lblSanE }
+                                                        };
+
 
             foreach (var kvp in mapSan)
             {
@@ -180,9 +183,11 @@ namespace DoAn_DotNet
                             {
                                 lbl.BackColor = Color.Gold;
                             }
-                            else // Trường hợp còn lại là 'Trống'
+                            else if (trangThai == "Hoàn thành")
                             {
-                                lbl.BackColor = Color.LightGray;
+
+                                //lbl.BackColor = Color.LightGray;
+                                lbl.BackColor = Color.Blue;
                             }
                             //// Tô màu cam nếu đang tìm đúng mã này
                             //if (!string.IsNullOrEmpty(txtTraCuu.Text) && maDat == txtTraCuu.Text.Trim())
@@ -218,6 +223,8 @@ namespace DoAn_DotNet
                 }
             }
         }
+        #endregion
+
         // Hàm tự động thêm dấu cách vào trước chữ để đẩy nó ra giữa
         private string CanGiuaTuDong(string text, Label lbl)
         {
@@ -259,21 +266,27 @@ namespace DoAn_DotNet
                 lblSanC.Enabled = false;
                 lblSanD.Enabled = false;
                 lblSanE.Enabled = false;
-            }
-            else if (string.IsNullOrEmpty(cboThoiGian.Text))
-            {
-                lblSanA.Enabled = true;
-                lblSanB.Enabled = true;
-                lblSanC.Enabled = true;
-                lblSanD.Enabled = true;
-                lblSanE.Enabled = true;
+
 
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn khung thời gian!", "Thông báo");
-                return;
+                if (!string.IsNullOrEmpty(cboThoiGian.Text))
+                {
+                    lblSanA.Enabled = true;
+                    lblSanB.Enabled = true;
+                    lblSanC.Enabled = true;
+                    lblSanD.Enabled = true;
+                    lblSanE.Enabled = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn khung thời gian!", "Thông báo");
+                    return;
+                }
             }
+
             LoadTrangThaiSan("");
 
 
