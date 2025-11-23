@@ -130,29 +130,35 @@ BEGIN
 END;
 GO
 
-
-USE QLSANBONG; -- Đảm bảo đang chọn đúng database
+ USE QLSANBONG;
 GO
 
--- Tạo thủ tục thống kê doanh thu còn thiếu
-CREATE PROCEDURE sp_ThongKeDoanhThu
+ALTER PROCEDURE sp_ThongKeDoanhThu
     @TuNgay DATETIME,
     @DenNgay DATETIME
 AS
 BEGIN
     SELECT 
         s.TenSan AS [Tên Sân],
-        tt.TenKhach AS [Tên Khách],
+        ds.TenKhach AS [Tên Khách],
         tt.ThanhTien AS [Thành Tiền],
-        gs.ThoiGianTra AS [Ngày Thanh Toán]
-    FROM THANH_TOAN tt
-    JOIN DAT_SAN ds ON tt.MaDat = ds.MaDat
+        -- Logic Mới: Ghép Ngày Đặt + Giờ Kết Thúc để ra thời điểm thanh toán dự kiến
+        -- Lưu ý: Kiểm tra kiểu dữ liệu trong DB của bạn. Nếu GioKetThuc là TIME và NgayDat là DATE:
+        CAST(ds.NgayDat AS DATETIME) + CAST(ds.GioKetThuc AS DATETIME) AS [Ngày Thanh Toán]
+    FROM DAT_SAN ds
+    -- 1. Kết nối bảng THANH_TOAN để lấy tiền (Chỉ đơn nào đã thanh toán mới hiện)
+    JOIN THANH_TOAN tt ON ds.MaDat = tt.MaDat
+    -- 2. Kết nối bảng SAN để lấy tên sân
     JOIN SAN s ON ds.MaSan = s.MaSan
-    LEFT JOIN GIAO_SAN gs ON ds.MaDat = gs.MaDat
-    WHERE gs.ThoiGianTra BETWEEN @TuNgay AND @DenNgay;
+    WHERE 
+        -- 3. Chỉ lấy đơn có trạng thái 'Hoàn thành'
+        ds.TrangThai = N'Hoàn thành' 
+        -- 4. Lọc theo khoảng thời gian dựa trên (Ngày Đặt + Giờ Kết Thúc)
+        AND (CAST(ds.NgayDat AS DATETIME) + CAST(ds.GioKetThuc AS DATETIME)) >= @TuNgay
+        AND (CAST(ds.NgayDat AS DATETIME) + CAST(ds.GioKetThuc AS DATETIME)) <= @DenNgay
+    ORDER BY [Ngày Thanh Toán] DESC;
 END;
 GO
-
 
 CREATE PROCEDURE sp_HuyDatSan
     @MaDat VARCHAR(20) -- Kiểu dữ liệu phải khớp với cột MaDat trong bảng
@@ -166,6 +172,8 @@ GO
 
 
 
+
+-- dữ liệu mẫu!
 
 USE QLSANBONG
 GO
