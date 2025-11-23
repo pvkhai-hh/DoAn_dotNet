@@ -507,9 +507,17 @@ namespace DoAn_DotNet
 
         private void MenuThongKe_Click(object sender, EventArgs e)
         {
+            // 1. Khởi tạo form Thống kê
             ThongKe tk = new ThongKe();
+
+            // 2. Ẩn form Main hiện tại đi
             this.Hide();
+
+            // 3. Hiển thị form Thống kê dưới dạng Dialog (Chương trình sẽ dừng tại dòng này chờ bạn tắt form Thống kê)
             tk.ShowDialog();
+
+            // 4. [QUAN TRỌNG] Sau khi tắt form Thống kê, dòng này sẽ chạy để hiện lại form Main
+            this.Show();
         }
     }
 }
