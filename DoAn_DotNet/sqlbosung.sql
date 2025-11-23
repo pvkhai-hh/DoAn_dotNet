@@ -173,6 +173,8 @@ GO
 
 
 
+-- dữ liệu mẫu!
+
 USE QLSANBONG
 GO
 
