@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnThongKe = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpTuNgay = new System.Windows.Forms.DateTimePicker();
-            this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTongDoanhThu = new System.Windows.Forms.Label();
-            this.btnThongKe = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.dgvDoanhThu = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,14 +66,34 @@
             this.panel1.Size = new System.Drawing.Size(1064, 180);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // btnThongKe
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(202, 71);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 22);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Từ ngày:";
+            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThongKe.Location = new System.Drawing.Point(449, 127);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(181, 40);
+            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.Text = "Xem doanh thu";
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Location = new System.Drawing.Point(377, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(301, 32);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "QUẢN LÝ THỐNG KÊ";
+            // 
+            // dtpDenNgay
+            // 
+            this.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDenNgay.Location = new System.Drawing.Point(656, 65);
+            this.dtpDenNgay.Name = "dtpDenNgay";
+            this.dtpDenNgay.Size = new System.Drawing.Size(200, 30);
+            this.dtpDenNgay.TabIndex = 2;
             // 
             // label2
             // 
@@ -92,23 +112,14 @@
             this.dtpTuNgay.Size = new System.Drawing.Size(200, 30);
             this.dtpTuNgay.TabIndex = 2;
             // 
-            // dtpDenNgay
+            // label1
             // 
-            this.dtpDenNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDenNgay.Location = new System.Drawing.Point(656, 65);
-            this.dtpDenNgay.Name = "dtpDenNgay";
-            this.dtpDenNgay.Size = new System.Drawing.Size(200, 30);
-            this.dtpDenNgay.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(377, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(301, 32);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "QUẢN LÝ THỐNG KÊ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(202, 71);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Từ ngày:";
             // 
             // panel2
             // 
@@ -130,17 +141,6 @@
             this.lblTongDoanhThu.TabIndex = 0;
             this.lblTongDoanhThu.Text = "Tổng doanh thu: 0VNĐ";
             // 
-            // btnThongKe
-            // 
-            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThongKe.Location = new System.Drawing.Point(449, 127);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(181, 40);
-            this.btnThongKe.TabIndex = 3;
-            this.btnThongKe.Text = "Xem doanh thu";
-            this.btnThongKe.UseVisualStyleBackColor = true;
-            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvDoanhThu);
@@ -149,15 +149,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(616, 293);
             this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.chartDoanhThu);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(622, 180);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(442, 293);
-            this.panel4.TabIndex = 3;
             // 
             // dgvDoanhThu
             // 
@@ -170,19 +161,28 @@
             this.dgvDoanhThu.Size = new System.Drawing.Size(616, 293);
             this.dgvDoanhThu.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.chartDoanhThu);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(622, 180);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(442, 293);
+            this.panel4.TabIndex = 3;
+            // 
             // chartDoanhThu
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea2);
+            chartArea1.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea1);
             this.chartDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend2);
+            legend1.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend1);
             this.chartDoanhThu.Location = new System.Drawing.Point(0, 0);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series1);
             this.chartDoanhThu.Size = new System.Drawing.Size(442, 293);
             this.chartDoanhThu.TabIndex = 0;
             this.chartDoanhThu.Text = "chart1";
@@ -197,16 +197,17 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ThongKe";
             this.Text = "Thống kê";
+            this.Load += new System.EventHandler(this.ThongKe_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).EndInit();
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).EndInit();
             this.ResumeLayout(false);
 
