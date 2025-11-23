@@ -115,12 +115,17 @@ namespace DoAn_DotNet
                     //       LEFT JOIN DAT_SAN d ON s.MaSan = d.MaSan AND d.NgayDat = @NgayDat";
                     // [QUAN TRỌNG] Thêm điều kiện: Chỉ lấy đơn Đã đặt hoặc Đang sử dụng. 
                     // Các đơn 'Hoàn thành' hoặc 'Hủy' sẽ bị lọc bỏ -> Trả về NULL -> Giao diện sẽ hiện ---
+                    //string sql = @"SELECT s.TenSan, s.LoaiSan, d.MaDat, d.TenKhach, d.SoDienThoai, d.TrangThai, d.GioBatDau, d.GioKetThuc
+                    //       FROM SAN s
+                    //       LEFT JOIN DAT_SAN d ON s.MaSan = d.MaSan 
+                    //            AND d.NgayDat = @NgayDat 
+                    //            AND d.TrangThai IN (N'Đã đặt', N'Đang sử dụng')";
+                    // [SỬA ĐỔI] Thêm N'Hoàn thành' vào danh sách lấy dữ liệu
                     string sql = @"SELECT s.TenSan, s.LoaiSan, d.MaDat, d.TenKhach, d.SoDienThoai, d.TrangThai, d.GioBatDau, d.GioKetThuc
                            FROM SAN s
                            LEFT JOIN DAT_SAN d ON s.MaSan = d.MaSan 
                                 AND d.NgayDat = @NgayDat 
-                                AND d.TrangThai IN (N'Đã đặt', N'Đang sử dụng')";
-
+                                AND d.TrangThai IN (N'Đã đặt', N'Đang sử dụng', N'Hoàn thành')";
                     if (coLocGio)
                     {
                         sql += " AND (d.GioBatDau < @DenGio AND d.GioKetThuc > @TuGio) ";
@@ -187,7 +192,11 @@ namespace DoAn_DotNet
                             {
 
                                 //lbl.BackColor = Color.LightGray;
-                                lbl.BackColor = Color.Blue;
+                                lbl.BackColor = Color.DeepSkyBlue;
+                            }
+                            else                             
+                            {
+                                lbl.BackColor = Color.LightGray;
                             }
                             //// Tô màu cam nếu đang tìm đúng mã này
                             //if (!string.IsNullOrEmpty(txtTraCuu.Text) && maDat == txtTraCuu.Text.Trim())
@@ -494,6 +503,13 @@ namespace DoAn_DotNet
                 }
                 catch (Exception ex) { MessageBox.Show("Lỗi hủy: " + ex.Message); }
             }
+        }
+
+        private void MenuThongKe_Click(object sender, EventArgs e)
+        {
+            ThongKe tk = new ThongKe();
+            this.Hide();
+            tk.ShowDialog();
         }
     }
 }

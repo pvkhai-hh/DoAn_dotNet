@@ -46,6 +46,8 @@
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.heToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.trangChủToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuThongKe = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,6 +66,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.txtTraCuu);
             this.groupBox2.Controls.Add(this.btnTraCuu);
             this.groupBox2.Location = new System.Drawing.Point(14, 12);
@@ -83,6 +86,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.lblSanC);
             this.panel1.Controls.Add(this.lblSanD);
@@ -158,6 +162,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.label3.Location = new System.Drawing.Point(449, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 22);
@@ -167,6 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.label1.Location = new System.Drawing.Point(45, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 22);
@@ -175,6 +181,7 @@
             // 
             // btnTimKiem
             // 
+            this.btnTimKiem.ForeColor = System.Drawing.Color.Black;
             this.btnTimKiem.Location = new System.Drawing.Point(862, 29);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(105, 43);
@@ -185,11 +192,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.cboThoiGian);
             this.groupBox1.Controls.Add(this.dtpChonNgay);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnTimKiem);
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(991, 90);
@@ -205,12 +214,16 @@
             // 
             // heToolStripMenuItem
             // 
+            this.heToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trangChủToolStripMenuItem,
+            this.MenuThongKe});
             this.heToolStripMenuItem.Name = "heToolStripMenuItem";
             this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.heToolStripMenuItem.Text = "Hệ thống";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.heToolStripMenuItem,
@@ -221,10 +234,24 @@
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // trangChủToolStripMenuItem
+            // 
+            this.trangChủToolStripMenuItem.Name = "trangChủToolStripMenuItem";
+            this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.trangChủToolStripMenuItem.Text = "Trang chủ";
+            // 
+            // MenuThongKe
+            // 
+            this.MenuThongKe.Name = "MenuThongKe";
+            this.MenuThongKe.Size = new System.Drawing.Size(224, 26);
+            this.MenuThongKe.Text = "Thống kê";
+            this.MenuThongKe.Click += new System.EventHandler(this.MenuThongKe_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1014, 525);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -266,5 +293,7 @@
         private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem heToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem trangChủToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuThongKe;
     }
 }

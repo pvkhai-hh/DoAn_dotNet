@@ -125,7 +125,7 @@ namespace DoAn_DotNet
 
                         string maTT = "TT" + DateTime.Now.ToString("ddHHmmss");
                         // Tách tên khách từ label (bỏ chữ "Tên khách hàng: ")
-                        string tenKhach = lblTenKhach.Text.Replace("Tên khách hàng: ", "");
+                        string tenKhach = lblTenKhach.Text.Replace("Tên KH: ", "").Trim();
 
                         SqlCommand cmd = new SqlCommand(sqlTT, conn);
                         cmd.Parameters.AddWithValue("@MaTT", maTT);

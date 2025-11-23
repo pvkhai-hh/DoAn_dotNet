@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace DoAn_DotNet
 {
-    public partial class GiaoSan : Form
+    public partial class Form1 : Form
     {
-        public GiaoSan()
+        public Form1()
         {
             InitializeComponent();
         }
+
+      
     }
 }
