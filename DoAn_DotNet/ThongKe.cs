@@ -62,8 +62,9 @@ namespace DoAn_DotNet
                     SqlCommand cmd = new SqlCommand("sp_ThongKeDoanhThu", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    // Xử lý ngày: Từ 00:00 ngày đầu đến 23:59 ngày cuối
+                    // Xử lý ngày: Lấy trọn vẹn từ giây đầu tiên của TuNgay đến giây cuối cùng của DenNgay
                     DateTime tuNgay = dtpTuNgay.Value.Date;
+                    // Ví dụ: Chọn 20/11 -> Lấy đến 23:59:59 của ngày 20/11
                     DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddSeconds(-1);
 
                     cmd.Parameters.AddWithValue("@TuNgay", tuNgay);
@@ -73,25 +74,33 @@ namespace DoAn_DotNet
                     DataTable dt = new DataTable();
                     da.Fill(dt);
 
-                    // 1. Đổ dữ liệu vào GridView
+                    // Đổ dữ liệu
                     dgvDoanhThu.DataSource = dt;
 
-                    // Format cột tiền cho đẹp
+                    // [Quan Trọng] Tự động giãn cột cho đẹp (Thêm dòng này nếu chưa có)
+                    dgvDoanhThu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    // Format tiền tệ
                     if (dgvDoanhThu.Columns["Thành Tiền"] != null)
                         dgvDoanhThu.Columns["Thành Tiền"].DefaultCellStyle.Format = "#,### VNĐ";
 
+                    // Format ngày giờ (Giờ này bây giờ là Giờ Kết Thúc lấy từ DAT_SAN)
                     if (dgvDoanhThu.Columns["Ngày Thanh Toán"] != null)
                         dgvDoanhThu.Columns["Ngày Thanh Toán"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
 
-                    // 2. Tính Tổng Tiền
+                    // Tính tổng tiền
                     decimal tongTien = 0;
                     foreach (DataRow row in dt.Rows)
                     {
-                        tongTien += Convert.ToDecimal(row["Thành Tiền"]);
+                        // Kiểm tra null để tránh lỗi crash chương trình
+                        if (row["Thành Tiền"] != DBNull.Value)
+                        {
+                            tongTien += Convert.ToDecimal(row["Thành Tiền"]);
+                        }
                     }
                     lblTongDoanhThu.Text = $"Tổng doanh thu: {tongTien:#,###} VNĐ";
 
-                    // 3. Vẽ Biểu Đồ (Nhóm tiền theo Tên Sân)
+                    // Vẽ biểu đồ
                     VeBieuDo(dt);
                 }
                 catch (Exception ex)
