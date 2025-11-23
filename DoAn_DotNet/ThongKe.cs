@@ -141,5 +141,10 @@ namespace DoAn_DotNet
             chartDoanhThu.ChartAreas[0].AxisX.Title = "Tên Sân";
             chartDoanhThu.ChartAreas[0].AxisY.Title = "Số Tiền (VNĐ)";
         }
+
+        private void ThongKe_Load_1(object sender, EventArgs e)
+        {
+                
+        }
     }
 }
