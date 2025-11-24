@@ -59,7 +59,7 @@ namespace DoAn_DotNet
             LoadTrangThaiSan();
         }
 
-        #region code phần load trạng thái cũ!
+
 
         private void LoadTrangThaiSan(string tenSanLoc = "")
         {
@@ -247,7 +247,7 @@ namespace DoAn_DotNet
                 }
             }
         }
-        #endregion
+    
 
         // Hàm tự động thêm dấu cách vào trước chữ để đẩy nó ra giữa
         private string CanGiuaTuDong(string text, Label lbl)

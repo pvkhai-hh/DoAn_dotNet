@@ -215,6 +215,7 @@
             // 
             // btnThanhToan
             // 
+            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThanhToan.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThanhToan.Location = new System.Drawing.Point(197, 442);
             this.btnThanhToan.Name = "btnThanhToan";
@@ -226,6 +227,7 @@
             // 
             // btnHuy
             // 
+            this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnHuy.Location = new System.Drawing.Point(44, 442);
             this.btnHuy.Name = "btnHuy";

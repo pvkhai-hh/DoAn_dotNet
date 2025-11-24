@@ -38,13 +38,13 @@
             this.txtTenKhach = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.btnGiaoSan = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // btnHuy
             // 
             this.btnHuy.BackColor = System.Drawing.Color.PapayaWhip;
+            this.btnHuy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -62,7 +62,7 @@
             // lblTieuDe
             // 
             this.lblTieuDe.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lblTieuDe.Location = new System.Drawing.Point(63, 9);
+            this.lblTieuDe.Location = new System.Drawing.Point(87, 9);
             this.lblTieuDe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTieuDe.Name = "lblTieuDe";
             this.lblTieuDe.Size = new System.Drawing.Size(347, 31);
@@ -71,6 +71,7 @@
             // btnDatSan
             // 
             this.btnDatSan.BackColor = System.Drawing.Color.PapayaWhip;
+            this.btnDatSan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDatSan.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDatSan.Image = ((System.Drawing.Image)(resources.GetObject("btnDatSan.Image")));
             this.btnDatSan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -88,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 108);
+            this.label1.Location = new System.Drawing.Point(79, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 22);
             this.label1.TabIndex = 2;
@@ -97,7 +98,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(79, 62);
+            this.label2.Location = new System.Drawing.Point(103, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 22);
             this.label2.TabIndex = 2;
@@ -105,14 +106,14 @@
             // 
             // txtTenKhach
             // 
-            this.txtTenKhach.Location = new System.Drawing.Point(181, 59);
+            this.txtTenKhach.Location = new System.Drawing.Point(205, 59);
             this.txtTenKhach.Name = "txtTenKhach";
             this.txtTenKhach.Size = new System.Drawing.Size(201, 30);
             this.txtTenKhach.TabIndex = 3;
             // 
             // txtSDT
             // 
-            this.txtSDT.Location = new System.Drawing.Point(181, 105);
+            this.txtSDT.Location = new System.Drawing.Point(205, 105);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(201, 30);
             this.txtSDT.TabIndex = 3;
@@ -120,6 +121,7 @@
             // btnGiaoSan
             // 
             this.btnGiaoSan.BackColor = System.Drawing.Color.PapayaWhip;
+            this.btnGiaoSan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGiaoSan.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnGiaoSan.Image = ((System.Drawing.Image)(resources.GetObject("btnGiaoSan.Image")));
             this.btnGiaoSan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -133,16 +135,6 @@
             this.btnGiaoSan.UseVisualStyleBackColor = false;
             this.btnGiaoSan.Click += new System.EventHandler(this.btnGiaoSan_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.Location = new System.Drawing.Point(111, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(299, 32);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "THÔNG TIN ĐẶT SÂN";
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -153,9 +145,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(518, 240);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.txtTenKhach);
             this.Controls.Add(this.label2);
@@ -184,7 +175,6 @@
         private System.Windows.Forms.TextBox txtTenKhach;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Button btnGiaoSan;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ImageList imageList1;
     }
 }

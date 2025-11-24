@@ -57,6 +57,8 @@
             // btnTraCuu
             // 
             this.btnTraCuu.BackColor = System.Drawing.Color.LightGreen;
+            this.btnTraCuu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTraCuu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnTraCuu.Location = new System.Drawing.Point(848, 29);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(105, 43);
@@ -79,7 +81,7 @@
             // 
             // txtTraCuu
             // 
-            this.txtTraCuu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtTraCuu.BackColor = System.Drawing.Color.White;
             this.txtTraCuu.Location = new System.Drawing.Point(24, 29);
             this.txtTraCuu.Multiline = true;
             this.txtTraCuu.Name = "txtTraCuu";
@@ -157,6 +159,7 @@
             // 
             // cboThoiGian
             // 
+            this.cboThoiGian.BackColor = System.Drawing.Color.White;
             this.cboThoiGian.FormattingEnabled = true;
             this.cboThoiGian.Location = new System.Drawing.Point(607, 33);
             this.cboThoiGian.Name = "cboThoiGian";
@@ -165,6 +168,7 @@
             // 
             // dtpChonNgay
             // 
+            this.dtpChonNgay.CalendarMonthBackground = System.Drawing.Color.WhiteSmoke;
             this.dtpChonNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpChonNgay.Location = new System.Drawing.Point(166, 33);
             this.dtpChonNgay.Name = "dtpChonNgay";
@@ -174,7 +178,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(449, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(131, 22);
@@ -184,7 +188,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(45, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 22);
@@ -194,6 +198,8 @@
             // btnTimKiem
             // 
             this.btnTimKiem.BackColor = System.Drawing.Color.LightGreen;
+            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnTimKiem.ForeColor = System.Drawing.Color.Black;
             this.btnTimKiem.Location = new System.Drawing.Point(862, 29);
             this.btnTimKiem.Name = "btnTimKiem";
