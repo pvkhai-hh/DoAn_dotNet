@@ -17,7 +17,7 @@ namespace DoAn_DotNet
             InitializeComponent();
            
         }
-           
+
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             if ((txtTaiKhoan.Text == "") || (txtMatKhau.Text == ""))
@@ -27,20 +27,44 @@ namespace DoAn_DotNet
             }
             else
             {
-                if (txtTaiKhoan.Text == "1" && txtMatKhau.Text == "1")
+                if ((txtTaiKhoan.Text == "") || (txtMatKhau.Text == ""))
                 {
-                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Main main = new Main();
-                  
-                    this.Hide(); // Ẩn form đăng nhập sau khi mở form chính
-                    main.ShowDialog();
+                    MessageBox.Show("Bạn chưa nhập tên đăng nhập hoặc mật khẩu", "Thông báo");
+                    txtTaiKhoan.Focus();
                 }
                 else
                 {
-                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtTaiKhoan.Clear();
-                    txtMatKhau.Clear();
-                    txtTaiKhoan.Focus();
+                    // TÀI KHOẢN 1: QUẢN LÝ (Admin) - Được xem tất cả
+                    if (txtTaiKhoan.Text == "1" && txtMatKhau.Text == "1")
+                    {
+                        MessageBox.Show("Đăng nhập admin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Truyền chữ "Admin" sang Main
+                        Main main = new Main("Admin");
+
+                        this.Hide();
+                        main.ShowDialog();
+                        this.Show(); // Hiện lại form login khi tắt Main (tùy chọn)
+                    }
+                    // TÀI KHOẢN 2: NHÂN VIÊN - Bị khóa thống kê
+                    else if (txtTaiKhoan.Text == "2" && txtMatKhau.Text == "1")
+                    {
+                        MessageBox.Show("Đăng nhập nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Truyền chữ "NhanVien" sang Main
+                        Main main = new Main("NhanVien");
+
+                        this.Hide();
+                        main.ShowDialog();
+                        this.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtTaiKhoan.Clear();
+                        txtMatKhau.Clear();
+                        txtTaiKhoan.Focus();
+                    }
                 }
             }
         }
