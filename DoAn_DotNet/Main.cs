@@ -210,8 +210,8 @@ namespace DoAn_DotNet
                         }
 
                         // --- SỬ DỤNG HÀM CĂN GIỮA TỰ ĐỘNG ---
-                        string dong1 = CanGiuaTuDong($"{tenSan.ToUpper()}", lbl);
-                        string dong2 = CanGiuaTuDong($"({loaiSan})", lbl);
+                        string dong1 = CanGiuaTuDong($"   {tenSan.ToUpper()}", lbl);
+                        string dong2 = CanGiuaTuDong($"   ({loaiSan})", lbl);
                         string line = CanGiuaTuDong("_____________________", lbl);
 
                         // [MỚI] Nội dung căn trái (Đã thêm Ngày và Giờ)
@@ -223,7 +223,7 @@ namespace DoAn_DotNet
                                       $"SĐT: {sdt}\n" +
                                       $"Trạng thái: {trangThai}";
 
-                        lbl.Text = dong1 + "\n" + dong2 + "\n" + line + "\n\n" + body;
+                        lbl.Text = "\n\n\n\n\n" + dong1 + "\n" + dong2 + "\n" + line + "\n\n" + body;
                     }
                 }
                 catch (Exception ex)

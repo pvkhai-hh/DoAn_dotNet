@@ -135,6 +135,7 @@
     <None Include="Resources\nen.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\football %281%29.png" />
     <Content Include="sqlbosung.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
