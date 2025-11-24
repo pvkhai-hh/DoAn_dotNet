@@ -151,9 +151,15 @@ namespace DoAn_DotNet
             chartDoanhThu.ChartAreas[0].AxisY.Title = "Số Tiền (VNĐ)";
         }
 
-        private void ThongKe_Load_1(object sender, EventArgs e)
+        private void MenuTrangChu_Click(object sender, EventArgs e)
         {
-                
+            this.Close();
+        }
+
+        private void MenuTroGiup_Click(object sender, EventArgs e)
+        {
+            TroGiup tg = new TroGiup();
+            tg.ShowDialog();
         }
     }
 }
