@@ -28,7 +28,6 @@ namespace DoAn_DotNet
             dtpTuNgay.Value = new DateTime(now.Year, now.Month, 1);
             dtpDenNgay.Value = now;
 
-            // Cấu hình biểu đồ ban đầu
             CauHinhBieuDo();
         }
         private void CauHinhBieuDo()
@@ -62,7 +61,7 @@ namespace DoAn_DotNet
                     SqlCommand cmd = new SqlCommand("sp_ThongKeDoanhThu", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    // Xử lý ngày: Lấy trọn vẹn từ giây đầu tiên của TuNgay đến giây cuối cùng của DenNgay
+                    // Lấy từ giây đầu tiên của TuNgay đến giây cuối cùng của DenNgay
                     DateTime tuNgay = dtpTuNgay.Value.Date;
                     // Ví dụ: Chọn 20/11 -> Lấy đến 23:59:59 của ngày 20/11
                     DateTime denNgay = dtpDenNgay.Value.Date.AddDays(1).AddSeconds(-1);
@@ -77,14 +76,14 @@ namespace DoAn_DotNet
                     // Đổ dữ liệu
                     dgvDoanhThu.DataSource = dt;
 
-                    // [Quan Trọng] Tự động giãn cột cho đẹp (Thêm dòng này nếu chưa có)
+                    // Tự động giãn cột cho đẹp 
                     dgvDoanhThu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                     // Format tiền tệ
                     if (dgvDoanhThu.Columns["Thành Tiền"] != null)
                         dgvDoanhThu.Columns["Thành Tiền"].DefaultCellStyle.Format = "#,### VNĐ";
 
-                    // Format ngày giờ (Giờ này bây giờ là Giờ Kết Thúc lấy từ DAT_SAN)
+                    // Format ngày giờ 
                     if (dgvDoanhThu.Columns["Ngày Thanh Toán"] != null)
                         dgvDoanhThu.Columns["Ngày Thanh Toán"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
 
@@ -92,7 +91,6 @@ namespace DoAn_DotNet
                     decimal tongTien = 0;
                     foreach (DataRow row in dt.Rows)
                     {
-                        // Kiểm tra null để tránh lỗi crash chương trình
                         if (row["Thành Tiền"] != DBNull.Value)
                         {
                             tongTien += Convert.ToDecimal(row["Thành Tiền"]);
@@ -111,7 +109,6 @@ namespace DoAn_DotNet
         }
         private void VeBieuDo(DataTable dt)
         {
-            // 1. Xóa sạch các Series cũ đi để tránh lỗi trùng hoặc thiếu
             chartDoanhThu.Series.Clear();
 
             // 2. Tạo mới lại Series "Doanh Thu" ngay tại đây cho chắc ăn
@@ -123,9 +120,6 @@ namespace DoAn_DotNet
             // Thêm nó vào Chart
             chartDoanhThu.Series.Add(series);
 
-            // --- PHẦN TÍNH TOÁN CŨ ---
-
-            // Nhóm dữ liệu: Cộng dồn tiền của từng sân
             var thongKeSan = new System.Collections.Generic.Dictionary<string, decimal>();
 
             foreach (DataRow row in dt.Rows)

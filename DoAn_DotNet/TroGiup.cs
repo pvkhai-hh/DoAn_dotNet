@@ -26,11 +26,9 @@ namespace DoAn_DotNet
             string cauHoi = txtInput.Text.Trim();
             if (string.IsNullOrEmpty(cauHoi)) return;
 
-            // 1. Hiện câu hỏi của người dùng lên khung chat (màu xanh/đen)
             ThemTinNhan("Bạn: " + cauHoi, Color.Black);
             txtInput.Clear();
 
-            // 2. Xử lý câu hỏi
             XuLyCauHoi(cauHoi);
         }
 
@@ -43,7 +41,6 @@ namespace DoAn_DotNet
             }
         }
 
-        // Hàm thêm tin nhắn vào khung chat với màu sắc
         private void ThemTinNhan(string noiDung, Color mauChu)
         {
             rtbChat.SelectionStart = rtbChat.TextLength;
@@ -55,13 +52,6 @@ namespace DoAn_DotNet
 
         private void XuLyCauHoi(string cauHoi)
         {
-            // Mẫu câu chuẩn: "Sân A lúc 10:00 - 11:00 ngày 23/11/2025..."
-            // Dùng Regex để bắt các nhóm dữ liệu:
-            // Nhóm 1: Tên sân (Sân A)
-            // Nhóm 2: Giờ bắt đầu (10:00)
-            // Nhóm 3: Giờ kết thúc (11:00)
-            // Nhóm 4: Ngày (23/11/2025)
-
             string pattern = @"(Sân [A-Za-z0-9]+).*?(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2}).*?ngày\s*(\d{1,2}/\d{1,2}/\d{4})";
 
             Match match = Regex.Match(cauHoi, pattern, RegexOptions.IgnoreCase);

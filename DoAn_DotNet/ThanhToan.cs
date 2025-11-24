@@ -22,9 +22,6 @@ namespace DoAn_DotNet
         {
             _maDat = maDat;
             InitializeComponent();
-            // --- THÊM ĐOẠN NÀY ĐỂ ÉP KÍCH THƯỚC ---
-            //this.AutoScaleMode = AutoScaleMode.None; // Tắt tự phóng to
-            //this.AutoSize = false; // Tắt tự giãn
             this.Size = new Size(400, 550); // Ép kích thước cố định (Rộng, Cao)
         }
        
@@ -39,7 +36,6 @@ namespace DoAn_DotNet
         }
         private void HienThiHoaDon()
         {
-            // 1. Tạo mã hóa đơn ngẫu nhiên (hoặc theo quy tắc)
             string maHD = "HD" + DateTime.Now.ToString("ddHHmm");
             lblMaHD.Text = "Mã HD: " + maHD;
             lblNgay.Text = "Ngày: " + DateTime.Now.ToString("dd/MM/yyyy");
@@ -62,32 +58,14 @@ namespace DoAn_DotNet
                         string tenKhach = reader["TenKhach"].ToString();
                         decimal donGia = Convert.ToDecimal(reader["DonGia"]);
 
-                        //// Xử lý thời gian
-                        //TimeSpan batDau = (TimeSpan)reader["GioBatDau"];
-                        //TimeSpan ketThuc = (TimeSpan)reader["GioKetThuc"];
-
-                        //// Nếu chưa có giờ kết thúc (lỗi dữ liệu) thì lấy giờ hiện tại để tính tạm
-                        //if (ketThuc == TimeSpan.Zero) ketThuc = DateTime.Now.TimeOfDay;
-
-                        //double soGio = (ketThuc - batDau).TotalHours;
-                        //// Làm tròn số giờ (VD: 1.5 giờ)
-                        //soGio = Math.Round(soGio, 1);
-                        //if (soGio < 1) soGio = 1; // Tối thiểu tính 1 giờ
-
-                        //decimal thanhTien = (decimal)soGio * donGia;
-                        //_tongTienCuoi = thanhTien;
                         double soGio = 1;
 
-                        decimal thanhTien = donGia; // Vì nhân với 1 nên thành tiền = đơn giá luôn
+                        decimal thanhTien = donGia;
                         _tongTienCuoi = thanhTien;
 
-                        // --- ĐỔ DỮ LIỆU LÊN FORM ---
                         lblTenKhach.Text = "Tên KH: " + tenKhach;
 
-                        // Format dòng chi tiết: Căn chỉnh bằng khoảng trắng hoặc Tab
-                        // Lưu ý: Để căn thẳng tắp, nên dùng Font Monospace (Consolas) hoặc chia Label ra
-                        // Ở đây mình dùng chuỗi format đơn giản:
-                        string maSanNgan = tenSan.Replace("Sân ", "S"); // Rút gọn tên sân cho đẹp
+                        string maSanNgan = tenSan.Replace("Sân ", "S"); // Lấy mã sân ngắn gọn
 
                         // Format tiền tệ VNĐ
                         string strDonGia = string.Format("{0:0,0}", donGia);
@@ -119,12 +97,10 @@ namespace DoAn_DotNet
                     try
                     {
                         conn.Open();
-                        // 1. Lưu vào bảng THANH_TOAN (Lịch sử)
                         string sqlTT = @"INSERT INTO THANH_TOAN (MaTT, MaDat, TenKhach, ThanhTien) 
                                          VALUES (@MaTT, @MaDat, @TenKhach, @ThanhTien)";
 
                         string maTT = "TT" + DateTime.Now.ToString("ddHHmmss");
-                        // Tách tên khách từ label (bỏ chữ "Tên khách hàng: ")
                         string tenKhach = lblTenKhach.Text.Replace("Tên KH: ", "").Trim();
 
                         SqlCommand cmd = new SqlCommand(sqlTT, conn);
@@ -153,7 +129,6 @@ namespace DoAn_DotNet
                 }
             }
         }
-
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.Close();
