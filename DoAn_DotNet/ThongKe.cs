@@ -155,5 +155,10 @@ namespace DoAn_DotNet
         {
                 
         }
+
+        private void tableLayoutPanelTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

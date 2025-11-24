@@ -43,11 +43,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuTroGiup = new System.Windows.Forms.ToolStripMenuItem();
             this.heToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.trangChủToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuThongKe = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -206,11 +206,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Quản lý sân:";
             // 
-            // trợGiúpToolStripMenuItem
+            // MenuTroGiup
             // 
-            this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.trợGiúpToolStripMenuItem.Text = "Trợ giúp";
+            this.MenuTroGiup.Name = "MenuTroGiup";
+            this.MenuTroGiup.Size = new System.Drawing.Size(78, 24);
+            this.MenuTroGiup.Text = "Trợ giúp";
+            this.MenuTroGiup.Click += new System.EventHandler(this.MenuTroGiup_Click);
             // 
             // heToolStripMenuItem
             // 
@@ -221,31 +222,31 @@
             this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.heToolStripMenuItem.Text = "Hệ thống";
             // 
+            // trangChủToolStripMenuItem
+            // 
+            this.trangChủToolStripMenuItem.Name = "trangChủToolStripMenuItem";
+            this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.trangChủToolStripMenuItem.Text = "Trang chủ";
+            // 
+            // MenuThongKe
+            // 
+            this.MenuThongKe.Name = "MenuThongKe";
+            this.MenuThongKe.Size = new System.Drawing.Size(156, 26);
+            this.MenuThongKe.Text = "Thống kê";
+            this.MenuThongKe.Click += new System.EventHandler(this.MenuThongKe_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.heToolStripMenuItem,
-            this.trợGiúpToolStripMenuItem});
+            this.MenuTroGiup});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1014, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // trangChủToolStripMenuItem
-            // 
-            this.trangChủToolStripMenuItem.Name = "trangChủToolStripMenuItem";
-            this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.trangChủToolStripMenuItem.Text = "Trang chủ";
-            // 
-            // MenuThongKe
-            // 
-            this.MenuThongKe.Name = "MenuThongKe";
-            this.MenuThongKe.Size = new System.Drawing.Size(224, 26);
-            this.MenuThongKe.Text = "Thống kê";
-            this.MenuThongKe.Click += new System.EventHandler(this.MenuThongKe_Click);
             // 
             // Main
             // 
@@ -290,7 +291,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ToolStripMenuItem trợGiúpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuTroGiup;
         private System.Windows.Forms.ToolStripMenuItem heToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem trangChủToolStripMenuItem;

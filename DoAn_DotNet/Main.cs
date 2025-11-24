@@ -519,5 +519,11 @@ namespace DoAn_DotNet
             // 4. [QUAN TRỌNG] Sau khi tắt form Thống kê, dòng này sẽ chạy để hiện lại form Main
             this.Show();
         }
+
+        private void MenuTroGiup_Click(object sender, EventArgs e)
+        {
+            TroGiup tg = new TroGiup();
+            tg.ShowDialog();
+        }
     }
 }
