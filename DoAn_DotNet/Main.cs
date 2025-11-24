@@ -43,18 +43,10 @@ namespace DoAn_DotNet
 
             // Mặc định chọn khung đầu tiên
             cboThoiGian.SelectedIndex = 0;
-            //if (_quyenHan == "Admin")
-            //{
-            //    // Nếu là Admin thì cho phép dùng Thống kê
-            //    MenuThongKe.Enabled = true;
-            //    this.Text = "Quản lý sân bóng - QUẢN TRỊ VIÊN"; // Đổi tên form cho oách
-            //}
+
             if (_quyenHan == "NhanVien")
             {
-                // Nếu không phải Admin (là Nhân viên) thì khóa lại
                 MenuThongKe.Enabled = false;
-                // MenuThongKe.Visible = false; // Hoặc dùng lệnh này để ẩn luôn
-                this.Text = "Quản lý sân bóng - NHÂN VIÊN";
             }
             LoadTrangThaiSan();
         }
@@ -63,7 +55,7 @@ namespace DoAn_DotNet
 
         private void LoadTrangThaiSan(string tenSanLoc = "")
         {
-            // --- PHẦN 1: CÀI ĐẶT GIAO DIỆN & ẨN HIỆN ---
+            // Giao diện có 5 sân: lblSanA, lblSanB, lblSanC, lblSanD, lblSanE
             Label[] labels = { lblSanA, lblSanB, lblSanC, lblSanD, lblSanE };
             var mapSan = new Dictionary<string, Label>{
                                                          { "Sân A", lblSanA }, { "Sân B", lblSanB },
@@ -94,18 +86,16 @@ namespace DoAn_DotNet
                 }
             }
 
-            // --- PHẦN 2: XỬ LÝ THỜI GIAN ĐỂ LỌC ---
+            // Xử lý lọc giờ
             string gioTu = "";
             string gioDen = "";
             bool coLocGio = false;
 
-            // Cắt chuỗi dựa vào dấu gạch ngang
             if (!string.IsNullOrEmpty(cboThoiGian.Text) && cboThoiGian.Text.Contains("-"))
             {
                 string[] parts = cboThoiGian.Text.Split('-');
                 if (parts.Length == 2)
                 {
-                    // Vì bạn đã nhập chuẩn "08:00" nên chỉ cần Trim() cắt khoảng trắng thừa là xong
                     gioTu = parts[0].Trim();
                     gioDen = parts[1].Trim();
 
@@ -114,10 +104,8 @@ namespace DoAn_DotNet
             }
 
 
-            // --- PHẦN 3: LẤY DỮ LIỆU SQL ---
+            // SQL
             string ngayChon = dtpChonNgay.Value.ToString("yyyy-MM-dd");
-
-            // [MỚI] Lấy chuỗi ngày để hiển thị (VD: 20/11/2025)
             string hienThiNgay = dtpChonNgay.Value.ToString("dd/MM/yyyy");
 
             using (SqlConnection conn = new SqlConnection(pro.strKetNoi))
@@ -125,17 +113,6 @@ namespace DoAn_DotNet
                 try
                 {
                     conn.Open();
-                    //string sql = @"SELECT s.TenSan, s.LoaiSan, d.MaDat, d.TenKhach, d.SoDienThoai, d.TrangThai, d.GioBatDau, d.GioKetThuc
-                    //       FROM SAN s
-                    //       LEFT JOIN DAT_SAN d ON s.MaSan = d.MaSan AND d.NgayDat = @NgayDat";
-                    // [QUAN TRỌNG] Thêm điều kiện: Chỉ lấy đơn Đã đặt hoặc Đang sử dụng. 
-                    // Các đơn 'Hoàn thành' hoặc 'Hủy' sẽ bị lọc bỏ -> Trả về NULL -> Giao diện sẽ hiện ---
-                    //string sql = @"SELECT s.TenSan, s.LoaiSan, d.MaDat, d.TenKhach, d.SoDienThoai, d.TrangThai, d.GioBatDau, d.GioKetThuc
-                    //       FROM SAN s
-                    //       LEFT JOIN DAT_SAN d ON s.MaSan = d.MaSan 
-                    //            AND d.NgayDat = @NgayDat 
-                    //            AND d.TrangThai IN (N'Đã đặt', N'Đang sử dụng')";
-                    // [SỬA ĐỔI] Thêm N'Hoàn thành' vào danh sách lấy dữ liệu
                     string sql = @"SELECT s.TenSan, s.LoaiSan, d.MaDat, d.TenKhach, d.SoDienThoai, d.TrangThai, d.GioBatDau, d.GioKetThuc
                            FROM SAN s
                            LEFT JOIN DAT_SAN d ON s.MaSan = d.MaSan 
@@ -180,7 +157,7 @@ namespace DoAn_DotNet
                         string tenKhach = "---";
                         string sdt = "---";
                         string trangThai = "Trống";
-                        string hienThiGio = "---"; // [MỚI] Biến chứa giờ
+                        string hienThiGio = "---"; 
 
                         if (!reader.IsDBNull(reader.GetOrdinal("MaDat")))
                         {
@@ -193,8 +170,6 @@ namespace DoAn_DotNet
                             TimeSpan tsKet = (TimeSpan)reader["GioKetThuc"];
                             hienThiGio = $"{tsDa.ToString(@"hh\:mm")} - {tsKet.ToString(@"hh\:mm")}";
 
-                            //if (trangThai == "Đang sử dụng") lbl.BackColor = Color.LightGreen;
-                            //else lbl.BackColor = Color.Gold;
                             if (trangThai == "Đang sử dụng")
                             {
                                 lbl.BackColor = Color.LightGreen;
@@ -205,35 +180,27 @@ namespace DoAn_DotNet
                             }
                             else if (trangThai == "Hoàn thành")
                             {
-
-                                //lbl.BackColor = Color.LightGray;
                                 lbl.BackColor = Color.DeepSkyBlue;
                             }
                             else                             
                             {
                                 lbl.BackColor = Color.LightGray;
                             }
-                            //// Tô màu cam nếu đang tìm đúng mã này
-                            //if (!string.IsNullOrEmpty(txtTraCuu.Text) && maDat == txtTraCuu.Text.Trim())
-                            //    lbl.BackColor = Color.OrangeRed;
-                            lbl.Tag = $"{maDat}|{tenSan}|{trangThai}"; // Lưu tạm thông tin vào Tag
+                            lbl.Tag = $"{maDat}|{tenSan}|{trangThai}"; 
                         }
                         else
                         {
                             lbl.BackColor = Color.LightGray;
-                            lbl.Tag = $"|{tenSan}|Trống"; // Lưu tạm thông tin vào Tag
+                            lbl.Tag = $"|{tenSan}|Trống"; 
                         }
 
-                        // --- SỬ DỤNG HÀM CĂN GIỮA TỰ ĐỘNG ---
+                        // Chỉnh sửa nội dung Label
                         string dong1 = CanGiuaTuDong($"   {tenSan.ToUpper()}", lbl);
                         string dong2 = CanGiuaTuDong($"   ({loaiSan})", lbl);
                         string line = CanGiuaTuDong("_____________________", lbl);
-
-                        // [MỚI] Nội dung căn trái (Đã thêm Ngày và Giờ)
-                        // Dùng các khoảng trắng sau dấu : để căn thẳng hàng cho đẹp
                         string body = $"Mã đặt: {maDat}\n" +
-                                      $"Ngày: {hienThiNgay}\n" +   // <-- Thêm dòng Ngày
-                                      $"Giờ: {hienThiGio}\n" +    // <-- Thêm dòng Giờ
+                                      $"Ngày: {hienThiNgay}\n" +  
+                                      $"Giờ: {hienThiGio}\n" +  
                                       $"Tên: {tenKhach}\n" +
                                       $"SĐT: {sdt}\n" +
                                       $"Trạng thái: {trangThai}";
@@ -248,24 +215,20 @@ namespace DoAn_DotNet
             }
         }
     
-
-        // Hàm tự động thêm dấu cách vào trước chữ để đẩy nó ra giữa
         private string CanGiuaTuDong(string text, Label lbl)
         {
-            //return new string(' ', soDauCach) + text;
             if (string.IsNullOrEmpty(text) || lbl == null) return "";
 
-            // 1. Đo độ rộng của chữ gốc
+            // Đo độ rộng của chữ gốc
             int doRongChu = TextRenderer.MeasureText(text, lbl.Font).Width;
 
-            // 2. Tính khoảng trống cần thiết ở bên trái để chữ ra giữa
+            // Tính khoảng trống cần thiết ở bên trái để chữ ra giữa
             // Công thức: (Chiều rộng khung - Chiều rộng chữ) / 2
             int doRongKhung = lbl.Width - lbl.Padding.Left - lbl.Padding.Right;
             int khoangTrongBenTrai = (doRongKhung - doRongChu) / 2;
 
             if (khoangTrongBenTrai <= 0) return text; // Chữ dài quá thì khỏi căn
 
-            // 3. VÒNG LẶP CHÈN DẤU CÁCH (CHÍNH XÁC HƠN PHÉP CHIA)
             string dauCach = "";
             int doRongHienTai = 0;
 
@@ -332,7 +295,7 @@ namespace DoAn_DotNet
                 try
                 {
                     conn.Open();
-                    // Tìm Ngày và Tên sân của mã đó
+                    // Tìm Ngày và Tên sân của mã 
                     string sql = @"SELECT d.NgayDat, s.TenSan 
                            FROM DAT_SAN d 
                            JOIN SAN s ON d.MaSan = s.MaSan 
@@ -348,14 +311,14 @@ namespace DoAn_DotNet
                         DateTime ngay = (DateTime)reader["NgayDat"];
                         string tenSan = reader["TenSan"].ToString();
 
-                        // 1. Đổi ngày
+                        // Đổi ngày
                         dtpChonNgay.Value = ngay;
 
-                        // 2. Xóa lọc giờ
+                        // Xóa lọc giờ
                         cboThoiGian.SelectedIndex = -1;
                         cboThoiGian.Text = "";
 
-                        // 3. GỌI HÀM LOAD ĐỂ CHỈ HIỆN ĐÚNG SÂN ĐÓ
+                        // GỌI HÀM LOAD ĐỂ CHỈ HIỆN ĐÚNG SÂN ĐÓ
                         LoadTrangThaiSan(tenSan);
                     }
                     else
@@ -377,7 +340,6 @@ namespace DoAn_DotNet
                 try
                 {
                     conn.Open();
-                    // Gọi Stored Procedure đã tạo ở Phần 1
                     SqlCommand cmd = new SqlCommand("sp_GiaoSan", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -391,27 +353,26 @@ namespace DoAn_DotNet
             }
         }
 
-        // Hàm Trả Sân & Thanh Toán (Thường sẽ nằm trong frmThanhToan khi bấm nút 'Thanh Toán')
-        // Nhưng nếu bạn muốn xử lý nhanh ở Main thì dùng hàm này:
-        private void XuLyTraSan(string maDat, DateTime gioTra)
-        {
-            using (SqlConnection conn = new SqlConnection(pro.strKetNoi))
-            {
-                try
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("sp_TraSan", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@MaDat", maDat);
-                    cmd.Parameters.AddWithValue("@ThoiGianTra", gioTra);
+        //private void XuLyTraSan(string maDat, DateTime gioTra)
+        //{
+        //    using (SqlConnection conn = new SqlConnection(pro.strKetNoi))
+        //    {
+        //        try
+        //        {
+        //            conn.Open();
+        //            SqlCommand cmd = new SqlCommand("sp_TraSan", conn);
+        //            cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show($"Đã trả sân!");
-                }
-                catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
-            }
-        }
+        //            cmd.Parameters.AddWithValue("@MaDat", maDat);
+        //            cmd.Parameters.AddWithValue("@ThoiGianTra", gioTra);
+
+        //            cmd.ExecuteNonQuery();
+        //            MessageBox.Show($"Đã trả sân!");
+        //        }
+        //        catch (Exception ex) { MessageBox.Show("Lỗi: " + ex.Message); }
+        //    }
+        //}
         private void lblSanA_Click(object sender, EventArgs e)
         {
             XuLySKClickSan(sender);
@@ -449,7 +410,7 @@ namespace DoAn_DotNet
             string tenSan = parts[1];
             string trangThai = parts[2];
 
-            // 1. SÂN TRỐNG -> ĐẶT
+            // SÂN TRỐNG -> ĐẶT
             if (trangThai == "Trống")
             {
                 var luachon = MessageBox.Show($"{tenSan} đang trống. Bạn có muốn đặt sân không?", "Đặt sân", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -459,34 +420,33 @@ namespace DoAn_DotNet
                     ds.SetThongTin(tenSan, cboThoiGian.Text, dtpChonNgay.Value);
                     ds.ShowDialog();
                     LoadTrangThaiSan();
-                    // Nếu họ đã bấm nút Đặt hoặc Giao luôn thì load lại màu
+                    // Nếu đã bấm nút Đặt hoặc Giao luôn thì load lại màu
                     if (ds.DaThucHien)
                         LoadTrangThaiSan();
                 }
             }
-            // 2. ĐÃ ĐẶT -> GIAO SÂN (NHẬP GIỜ NHẬN)
+            // ĐÃ ĐẶT -> GIAO SÂN 
             else if (trangThai == "Đã đặt")
             {
-                // Logic: Yes -> Nhận sân | No -> Hủy khách này
+                // Yes -> Nhận sân | No -> Hủy khách này
                 DialogResult hoi = MessageBox.Show($"Sân này đã được đặt. Bạn có muốn nhận sân không?", "Xử lý đặt sân", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
-                if (hoi == DialogResult.Yes) // NHẬN SÂN
+                if (hoi == DialogResult.Yes) 
                 {
-                    // Gọi code check-in (Giao sân)
                     XuLyGiaoSan(maDat, DateTime.Now);
-                    LoadTrangThaiSan(); // Refresh lại màu xanh
+                    LoadTrangThaiSan(); 
                 }
-                else if (hoi == DialogResult.No) // HỦY ĐẶT
+                else if (hoi == DialogResult.No) 
                 {
                     if (MessageBox.Show("Bạn chắc chắn muốn hủy lịch đặt này và chuyển sân về trạng thái trống?",
                                         "Xác nhận hủy", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         XuLyHuyDat(maDat);
-                        LoadTrangThaiSan(); // Refresh lại màu xám
+                        LoadTrangThaiSan(); 
                     }
                 }
             }
-            // 3. ĐANG SỬ DỤNG -> TRẢ SÂN (NHẬP GIỜ TRẢ)
+            // ĐANG SỬ DỤNG -> TRẢ SÂN
             else if (trangThai == "Đang sử dụng")
             {
                 var hoi = MessageBox.Show("Bạn có muốn thanh toán và trả sân không?", "Thanh toán", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -494,12 +454,11 @@ namespace DoAn_DotNet
 
                 if (hoi == DialogResult.Yes)
                 {
-                    // Mở form Thanh Toán, truyền Mã Đặt qua để tính tiền
                     ThanhToan tt = new ThanhToan(maDat);
                     tt.ShowDialog();
 
                     if (tt.DaThanhToan)
-                        LoadTrangThaiSan(); // Refresh lại thành trống
+                        LoadTrangThaiSan(); 
                 }
             }
         }
@@ -522,16 +481,9 @@ namespace DoAn_DotNet
 
         private void MenuThongKe_Click(object sender, EventArgs e)
         {
-            // 1. Khởi tạo form Thống kê
             ThongKe tk = new ThongKe();
-
-            // 2. Ẩn form Main hiện tại đi
             this.Hide();
-
-            // 3. Hiển thị form Thống kê dưới dạng Dialog (Chương trình sẽ dừng tại dòng này chờ bạn tắt form Thống kê)
             tk.ShowDialog();
-
-            // 4. [QUAN TRỌNG] Sau khi tắt form Thống kê, dòng này sẽ chạy để hiện lại form Main
             this.Show();
         }
 
@@ -539,6 +491,13 @@ namespace DoAn_DotNet
         {
             TroGiup tg = new TroGiup();
             tg.ShowDialog();
+        }
+
+        private void menuDangXuat_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            this.Hide();
+            lg.ShowDialog();
         }
     }
 }

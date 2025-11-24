@@ -27,45 +27,35 @@ namespace DoAn_DotNet
             }
             else
             {
-                if ((txtTaiKhoan.Text == "") || (txtMatKhau.Text == ""))
+
+                // Quyền admin
+                if (txtTaiKhoan.Text == "admin" && txtMatKhau.Text == "123")
                 {
-                    MessageBox.Show("Bạn chưa nhập tên đăng nhập hoặc mật khẩu", "Thông báo");
-                    txtTaiKhoan.Focus();
+                    MessageBox.Show("Đăng nhập admin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Main main = new Main("Admin");
+
+                    this.Hide();
+                    main.ShowDialog();
+                    this.Show(); // Hiện lại form login khi tắt Main (tùy chọn)
+                }
+                // Quyền nhân viên
+                else if (txtTaiKhoan.Text == "nhanvien" && txtMatKhau.Text == "123")
+                {
+                    MessageBox.Show("Đăng nhập nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Main main = new Main("NhanVien");
+
+                    this.Hide();
+                    main.ShowDialog();
+                    this.Show();
                 }
                 else
                 {
-                    // TÀI KHOẢN 1: QUẢN LÝ (Admin) - Được xem tất cả
-                    if (txtTaiKhoan.Text == "admin" && txtMatKhau.Text == "123")
-                    {
-                        MessageBox.Show("Đăng nhập admin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Truyền chữ "Admin" sang Main
-                        Main main = new Main("Admin");
-
-                        this.Hide();
-                        main.ShowDialog();
-                        this.Show(); // Hiện lại form login khi tắt Main (tùy chọn)
-                    }
-                    // TÀI KHOẢN 2: NHÂN VIÊN - Bị khóa thống kê
-                    else if (txtTaiKhoan.Text == "nhanvien" && txtMatKhau.Text == "123")
-                    {
-                        MessageBox.Show("Đăng nhập nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // Truyền chữ "NhanVien" sang Main
-                        Main main = new Main("NhanVien");
-
-                        this.Hide();
-                        main.ShowDialog();
-                        this.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtTaiKhoan.Clear();
-                        txtMatKhau.Clear();
-                        txtTaiKhoan.Focus();
-                    }
+                    MessageBox.Show("Tài khoản hoặc mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTaiKhoan.Clear();
+                    txtMatKhau.Clear();
+                    txtTaiKhoan.Focus();
                 }
+
             }
         }
 
