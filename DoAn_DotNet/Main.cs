@@ -14,10 +14,13 @@ namespace DoAn_DotNet
 {
     public partial class Main : Form
     {
-        public Main()
+        private string _quyenHan;
+        public Main(string quyenHan)
         {
             InitializeComponent();
+            _quyenHan = quyenHan; // Lưu lại quyền hạn
         }
+
 
         ChuoiKetNoi pro = new ChuoiKetNoi();
 
@@ -40,7 +43,19 @@ namespace DoAn_DotNet
 
             // Mặc định chọn khung đầu tiên
             cboThoiGian.SelectedIndex = 0;
-
+            //if (_quyenHan == "Admin")
+            //{
+            //    // Nếu là Admin thì cho phép dùng Thống kê
+            //    MenuThongKe.Enabled = true;
+            //    this.Text = "Quản lý sân bóng - QUẢN TRỊ VIÊN"; // Đổi tên form cho oách
+            //}
+            if (_quyenHan == "NhanVien")
+            {
+                // Nếu không phải Admin (là Nhân viên) thì khóa lại
+                MenuThongKe.Enabled = false;
+                // MenuThongKe.Visible = false; // Hoặc dùng lệnh này để ẩn luôn
+                this.Text = "Quản lý sân bóng - NHÂN VIÊN";
+            }
             LoadTrangThaiSan();
         }
 
