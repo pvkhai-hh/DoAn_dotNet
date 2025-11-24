@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TroGiup));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDong = new System.Windows.Forms.Button();
             this.btnGui = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rtbChat = new System.Windows.Forms.RichTextBox();
-            this.btnDong = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,19 +50,36 @@
             this.panel1.Size = new System.Drawing.Size(598, 105);
             this.panel1.TabIndex = 1;
             // 
+            // btnDong
+            // 
+            this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDong.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDong.Location = new System.Drawing.Point(483, 18);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(106, 65);
+            this.btnDong.TabIndex = 1;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.UseVisualStyleBackColor = false;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
             // btnGui
             // 
+            this.btnGui.BackColor = System.Drawing.Color.PapayaWhip;
             this.btnGui.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnGui.Image = ((System.Drawing.Image)(resources.GetObject("btnGui.Image")));
+            this.btnGui.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGui.Location = new System.Drawing.Point(371, 18);
             this.btnGui.Name = "btnGui";
             this.btnGui.Size = new System.Drawing.Size(106, 65);
             this.btnGui.TabIndex = 1;
             this.btnGui.Text = "Gửi";
-            this.btnGui.UseVisualStyleBackColor = true;
+            this.btnGui.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGui.UseVisualStyleBackColor = false;
             this.btnGui.Click += new System.EventHandler(this.BtnGui_Click);
             // 
             // txtInput
             // 
+            this.txtInput.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtInput.Location = new System.Drawing.Point(9, 18);
             this.txtInput.Multiline = true;
             this.txtInput.Name = "txtInput";
@@ -86,6 +104,7 @@
             // 
             // rtbChat
             // 
+            this.rtbChat.BackColor = System.Drawing.Color.Honeydew;
             this.rtbChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbChat.Location = new System.Drawing.Point(3, 3);
             this.rtbChat.Name = "rtbChat";
@@ -93,17 +112,6 @@
             this.rtbChat.Size = new System.Drawing.Size(598, 458);
             this.rtbChat.TabIndex = 2;
             this.rtbChat.Text = "";
-            // 
-            // btnDong
-            // 
-            this.btnDong.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDong.Location = new System.Drawing.Point(483, 18);
-            this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(106, 65);
-            this.btnDong.TabIndex = 1;
-            this.btnDong.Text = "Đóng";
-            this.btnDong.UseVisualStyleBackColor = true;
-            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // TroGiup
             // 

@@ -56,17 +56,18 @@
             // 
             // btnTraCuu
             // 
+            this.btnTraCuu.BackColor = System.Drawing.Color.LightGreen;
             this.btnTraCuu.Location = new System.Drawing.Point(848, 29);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(105, 43);
             this.btnTraCuu.TabIndex = 0;
             this.btnTraCuu.Text = "Tra cứu";
-            this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.UseVisualStyleBackColor = false;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.BackColor = System.Drawing.Color.Honeydew;
             this.groupBox2.Controls.Add(this.txtTraCuu);
             this.groupBox2.Controls.Add(this.btnTraCuu);
             this.groupBox2.Location = new System.Drawing.Point(14, 12);
@@ -78,6 +79,7 @@
             // 
             // txtTraCuu
             // 
+            this.txtTraCuu.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtTraCuu.Location = new System.Drawing.Point(24, 29);
             this.txtTraCuu.Multiline = true;
             this.txtTraCuu.Name = "txtTraCuu";
@@ -86,7 +88,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.Honeydew;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.lblSanC);
             this.panel1.Controls.Add(this.lblSanD);
@@ -95,51 +97,61 @@
             this.panel1.Controls.Add(this.lblSanA);
             this.panel1.Location = new System.Drawing.Point(12, 138);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(991, 358);
+            this.panel1.Size = new System.Drawing.Size(992, 458);
             this.panel1.TabIndex = 6;
             // 
             // lblSanC
             // 
             this.lblSanC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSanC.Image = global::DoAn_DotNet.Properties.Resources.football__1_;
+            this.lblSanC.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSanC.Location = new System.Drawing.Point(402, 126);
             this.lblSanC.Name = "lblSanC";
-            this.lblSanC.Size = new System.Drawing.Size(188, 217);
+            this.lblSanC.Size = new System.Drawing.Size(188, 318);
             this.lblSanC.TabIndex = 2;
             this.lblSanC.Click += new System.EventHandler(this.lblSanC_Click);
             // 
             // lblSanD
             // 
             this.lblSanD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSanD.Image = global::DoAn_DotNet.Properties.Resources.football__1_;
+            this.lblSanD.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSanD.Location = new System.Drawing.Point(596, 126);
             this.lblSanD.Name = "lblSanD";
-            this.lblSanD.Size = new System.Drawing.Size(188, 217);
+            this.lblSanD.Size = new System.Drawing.Size(188, 318);
             this.lblSanD.TabIndex = 2;
             this.lblSanD.Click += new System.EventHandler(this.lblSanD_Click);
             // 
             // lblSanB
             // 
             this.lblSanB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSanB.Image = global::DoAn_DotNet.Properties.Resources.football__1_;
+            this.lblSanB.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSanB.Location = new System.Drawing.Point(208, 126);
             this.lblSanB.Name = "lblSanB";
-            this.lblSanB.Size = new System.Drawing.Size(188, 217);
+            this.lblSanB.Size = new System.Drawing.Size(188, 318);
             this.lblSanB.TabIndex = 2;
             this.lblSanB.Click += new System.EventHandler(this.lblSanB_Click);
             // 
             // lblSanE
             // 
             this.lblSanE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSanE.Image = global::DoAn_DotNet.Properties.Resources.football__1_;
+            this.lblSanE.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSanE.Location = new System.Drawing.Point(790, 126);
             this.lblSanE.Name = "lblSanE";
-            this.lblSanE.Size = new System.Drawing.Size(188, 217);
+            this.lblSanE.Size = new System.Drawing.Size(188, 318);
             this.lblSanE.TabIndex = 2;
             this.lblSanE.Click += new System.EventHandler(this.lblSanE_Click);
             // 
             // lblSanA
             // 
             this.lblSanA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSanA.Image = global::DoAn_DotNet.Properties.Resources.football__1_;
+            this.lblSanA.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblSanA.Location = new System.Drawing.Point(14, 126);
             this.lblSanA.Name = "lblSanA";
-            this.lblSanA.Size = new System.Drawing.Size(188, 217);
+            this.lblSanA.Size = new System.Drawing.Size(188, 318);
             this.lblSanA.TabIndex = 2;
             this.lblSanA.Click += new System.EventHandler(this.lblSanA_Click);
             // 
@@ -181,18 +193,19 @@
             // 
             // btnTimKiem
             // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.LightGreen;
             this.btnTimKiem.ForeColor = System.Drawing.Color.Black;
             this.btnTimKiem.Location = new System.Drawing.Point(862, 29);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(105, 43);
             this.btnTimKiem.TabIndex = 0;
             this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.BackColor = System.Drawing.Color.Honeydew;
             this.groupBox1.Controls.Add(this.cboThoiGian);
             this.groupBox1.Controls.Add(this.dtpChonNgay);
             this.groupBox1.Controls.Add(this.label3);
@@ -237,14 +250,14 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.BackColor = System.Drawing.Color.Honeydew;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.heToolStripMenuItem,
             this.MenuTroGiup});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1014, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1016, 28);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -252,8 +265,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1014, 525);
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.ClientSize = new System.Drawing.Size(1016, 608);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);

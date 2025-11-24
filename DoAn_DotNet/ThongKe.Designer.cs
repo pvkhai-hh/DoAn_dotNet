@@ -66,7 +66,7 @@
             // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.BackColor = System.Drawing.Color.Honeydew;
             this.panelTop.Controls.Add(this.menuStrip1);
             this.panelTop.Controls.Add(this.tableLayoutPanelTop);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -79,7 +79,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.BackColor = System.Drawing.Color.Honeydew;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -88,7 +88,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(4, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(325, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(175, 28);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,18 +104,19 @@
             // MenuTrangChu
             // 
             this.MenuTrangChu.Name = "MenuTrangChu";
-            this.MenuTrangChu.Size = new System.Drawing.Size(224, 26);
+            this.MenuTrangChu.Size = new System.Drawing.Size(156, 26);
             this.MenuTrangChu.Text = "Trang chủ";
             this.MenuTrangChu.Click += new System.EventHandler(this.MenuTrangChu_Click);
             // 
             // MenuThongKe
             // 
             this.MenuThongKe.Name = "MenuThongKe";
-            this.MenuThongKe.Size = new System.Drawing.Size(224, 26);
+            this.MenuThongKe.Size = new System.Drawing.Size(156, 26);
             this.MenuThongKe.Text = "Thống kê";
             // 
             // MenuTroGiup
             // 
+            this.MenuTroGiup.BackColor = System.Drawing.Color.Honeydew;
             this.MenuTroGiup.Name = "MenuTroGiup";
             this.MenuTroGiup.Size = new System.Drawing.Size(78, 24);
             this.MenuTroGiup.Text = "Trợ giúp";
@@ -123,6 +124,7 @@
             // 
             // tableLayoutPanelTop
             // 
+            this.tableLayoutPanelTop.BackColor = System.Drawing.Color.Honeydew;
             this.tableLayoutPanelTop.ColumnCount = 2;
             this.tableLayoutPanelTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.57185F));
             this.tableLayoutPanelTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.42814F));
@@ -142,6 +144,7 @@
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
+            this.labelTitle.BackColor = System.Drawing.Color.Honeydew;
             this.labelTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTitle.Font = new System.Drawing.Font("Times New Roman", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
@@ -233,7 +236,7 @@
             // 
             // panelBottom
             // 
-            this.panelBottom.BackColor = System.Drawing.Color.White;
+            this.panelBottom.BackColor = System.Drawing.Color.Honeydew;
             this.panelBottom.Controls.Add(this.lblTongDoanhThu);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 506);
@@ -299,6 +302,7 @@
             // 
             // panelRight
             // 
+            this.panelRight.BackColor = System.Drawing.Color.White;
             this.panelRight.Controls.Add(this.chartDoanhThu);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRight.Location = new System.Drawing.Point(689, 3);
