@@ -35,7 +35,7 @@ namespace DoAn_DotNet
                 else
                 {
                     // TÀI KHOẢN 1: QUẢN LÝ (Admin) - Được xem tất cả
-                    if (txtTaiKhoan.Text == "1" && txtMatKhau.Text == "1")
+                    if (txtTaiKhoan.Text == "admin" && txtMatKhau.Text == "123")
                     {
                         MessageBox.Show("Đăng nhập admin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -47,7 +47,7 @@ namespace DoAn_DotNet
                         this.Show(); // Hiện lại form login khi tắt Main (tùy chọn)
                     }
                     // TÀI KHOẢN 2: NHÂN VIÊN - Bị khóa thống kê
-                    else if (txtTaiKhoan.Text == "2" && txtMatKhau.Text == "1")
+                    else if (txtTaiKhoan.Text == "nhanvien" && txtMatKhau.Text == "123")
                     {
                         MessageBox.Show("Đăng nhập nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

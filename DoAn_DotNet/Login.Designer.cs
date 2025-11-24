@@ -43,6 +43,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDangNhap.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Location = new System.Drawing.Point(112, 196);

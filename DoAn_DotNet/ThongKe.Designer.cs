@@ -161,7 +161,7 @@
             this.btnThongKe.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(140)))), ((int)(((byte)(210)))));
             this.btnThongKe.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThongKe.ForeColor = System.Drawing.Color.White;
             this.btnThongKe.Location = new System.Drawing.Point(1037, 77);
