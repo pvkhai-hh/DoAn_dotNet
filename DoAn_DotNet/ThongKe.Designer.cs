@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.heToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuTrangChu = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuThongKe = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuTroGiup = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanelTop = new System.Windows.Forms.TableLayoutPanel();
             this.labelTitle = new System.Windows.Forms.Label();
+            this.btnThongKe = new System.Windows.Forms.Button();
             this.flowPanelFilters = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpTuNgay = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDenNgay = new System.Windows.Forms.DateTimePicker();
-            this.btnThongKe = new System.Windows.Forms.Button();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.lblTongDoanhThu = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.dgvDoanhThu = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.heToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trangChủToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuThongKe = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuTroGiup = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRight = new System.Windows.Forms.Panel();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelTop.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.tableLayoutPanelTop.SuspendLayout();
             this.flowPanelFilters.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.panelRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -77,6 +77,50 @@
             this.panelTop.Size = new System.Drawing.Size(1370, 151);
             this.panelTop.TabIndex = 0;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.heToolStripMenuItem,
+            this.MenuTroGiup});
+            this.menuStrip1.Location = new System.Drawing.Point(4, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(325, 28);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // heToolStripMenuItem
+            // 
+            this.heToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuTrangChu,
+            this.MenuThongKe});
+            this.heToolStripMenuItem.Name = "heToolStripMenuItem";
+            this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.heToolStripMenuItem.Text = "Hệ thống";
+            // 
+            // MenuTrangChu
+            // 
+            this.MenuTrangChu.Name = "MenuTrangChu";
+            this.MenuTrangChu.Size = new System.Drawing.Size(224, 26);
+            this.MenuTrangChu.Text = "Trang chủ";
+            this.MenuTrangChu.Click += new System.EventHandler(this.MenuTrangChu_Click);
+            // 
+            // MenuThongKe
+            // 
+            this.MenuThongKe.Name = "MenuThongKe";
+            this.MenuThongKe.Size = new System.Drawing.Size(224, 26);
+            this.MenuThongKe.Text = "Thống kê";
+            // 
+            // MenuTroGiup
+            // 
+            this.MenuTroGiup.Name = "MenuTroGiup";
+            this.MenuTroGiup.Size = new System.Drawing.Size(78, 24);
+            this.MenuTroGiup.Text = "Trợ giúp";
+            this.MenuTroGiup.Click += new System.EventHandler(this.MenuTroGiup_Click);
+            // 
             // tableLayoutPanelTop
             // 
             this.tableLayoutPanelTop.ColumnCount = 2;
@@ -94,7 +138,6 @@
             this.tableLayoutPanelTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44F));
             this.tableLayoutPanelTop.Size = new System.Drawing.Size(1336, 125);
             this.tableLayoutPanelTop.TabIndex = 0;
-            this.tableLayoutPanelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelTop_Paint);
             // 
             // labelTitle
             // 
@@ -109,6 +152,23 @@
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Quản lý thống kê";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(140)))), ((int)(((byte)(210)))));
+            this.btnThongKe.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThongKe.ForeColor = System.Drawing.Color.White;
+            this.btnThongKe.Location = new System.Drawing.Point(1037, 77);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(292, 40);
+            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.Text = "Xem doanh thu";
+            this.btnThongKe.UseVisualStyleBackColor = false;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // flowPanelFilters
             // 
@@ -171,23 +231,6 @@
             this.dtpDenNgay.Size = new System.Drawing.Size(246, 30);
             this.dtpDenNgay.TabIndex = 3;
             // 
-            // btnThongKe
-            // 
-            this.btnThongKe.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(140)))), ((int)(((byte)(210)))));
-            this.btnThongKe.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThongKe.ForeColor = System.Drawing.Color.White;
-            this.btnThongKe.Location = new System.Drawing.Point(1037, 77);
-            this.btnThongKe.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(292, 40);
-            this.btnThongKe.TabIndex = 3;
-            this.btnThongKe.Text = "Xem doanh thu";
-            this.btnThongKe.UseVisualStyleBackColor = false;
-            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
-            // 
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.White;
@@ -231,14 +274,14 @@
             this.dgvDoanhThu.BackgroundColor = System.Drawing.Color.White;
             this.dgvDoanhThu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDoanhThu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDoanhThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(80)))), ((int)(((byte)(100)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDoanhThu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDoanhThu.ColumnHeadersHeight = 40;
             this.dgvDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDoanhThu.EnableHeadersVisualStyles = false;
@@ -254,48 +297,6 @@
             this.dgvDoanhThu.Size = new System.Drawing.Size(653, 329);
             this.dgvDoanhThu.TabIndex = 0;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.heToolStripMenuItem,
-            this.MenuTroGiup});
-            this.menuStrip1.Location = new System.Drawing.Point(4, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(175, 28);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // heToolStripMenuItem
-            // 
-            this.heToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trangChủToolStripMenuItem,
-            this.MenuThongKe});
-            this.heToolStripMenuItem.Name = "heToolStripMenuItem";
-            this.heToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
-            this.heToolStripMenuItem.Text = "Hệ thống";
-            // 
-            // trangChủToolStripMenuItem
-            // 
-            this.trangChủToolStripMenuItem.Name = "trangChủToolStripMenuItem";
-            this.trangChủToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.trangChủToolStripMenuItem.Text = "Trang chủ";
-            // 
-            // MenuThongKe
-            // 
-            this.MenuThongKe.Name = "MenuThongKe";
-            this.MenuThongKe.Size = new System.Drawing.Size(224, 26);
-            this.MenuThongKe.Text = "Thống kê";
-            // 
-            // MenuTroGiup
-            // 
-            this.MenuTroGiup.Name = "MenuTroGiup";
-            this.MenuTroGiup.Size = new System.Drawing.Size(78, 26);
-            this.MenuTroGiup.Text = "Trợ giúp";
-            // 
             // panelRight
             // 
             this.panelRight.Controls.Add(this.chartDoanhThu);
@@ -309,15 +310,15 @@
             // 
             // chartDoanhThu
             // 
-            chartArea7.AxisX.Title = "Tên Sân";
-            chartArea7.AxisY.Title = "Số Tiền (VNĐ)";
-            chartArea7.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea7);
+            chartArea2.AxisX.Title = "Tên Sân";
+            chartArea2.AxisY.Title = "Số Tiền (VNĐ)";
+            chartArea2.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea2);
             this.chartDoanhThu.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Alignment = System.Drawing.StringAlignment.Center;
-            legend7.BackColor = System.Drawing.Color.Transparent;
-            legend7.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend7);
+            legend2.Alignment = System.Drawing.StringAlignment.Center;
+            legend2.BackColor = System.Drawing.Color.Transparent;
+            legend2.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend2);
             this.chartDoanhThu.Location = new System.Drawing.Point(12, 10);
             this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.chartDoanhThu.Name = "chartDoanhThu";
@@ -354,9 +355,10 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "ThongKe";
             this.Text = "Thống kê";
-            this.Load += new System.EventHandler(this.ThongKe_Load_1);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.tableLayoutPanelTop.ResumeLayout(false);
             this.tableLayoutPanelTop.PerformLayout();
             this.flowPanelFilters.ResumeLayout(false);
@@ -365,8 +367,6 @@
             this.panelBottom.PerformLayout();
             this.panelLeft.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.panelRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -391,7 +391,7 @@
         private System.Windows.Forms.DataGridView dgvDoanhThu;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem heToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem trangChủToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuTrangChu;
         private System.Windows.Forms.ToolStripMenuItem MenuThongKe;
         private System.Windows.Forms.ToolStripMenuItem MenuTroGiup;
         private System.Windows.Forms.Panel panelRight;
